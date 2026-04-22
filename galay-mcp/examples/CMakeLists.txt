@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 3.20)
+
+function(add_mcp_example target_name source_file)
+    add_executable(${target_name} ${source_file})
+    target_link_libraries(${target_name} PRIVATE galay-mcp)
+
+    set_target_properties(${target_name} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    )
+endfunction()
+
+function(add_mcp_import_example target_name source_file)
+    add_executable(${target_name} ${source_file})
+    target_link_libraries(${target_name} PRIVATE galay-mcp-modules)
+
+    set_target_properties(${target_name} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+        CXX_SCAN_FOR_MODULES ON
+    )
+endfunction()
+
+if(BUILD_EXAMPLES)
+    # include 版本
+    add_mcp_example(E1-BasicStdioUsage include/E1-basic_stdio_usage.cc)
+    add_mcp_example(E2-BasicHttpUsage include/E2-basic_http_usage.cc)
+
+    # import 版本（按工具链支持自动开启）
+    if(BUILD_MODULE_EXAMPLES AND TARGET galay-mcp-modules)
+        add_mcp_import_example(E1-BasicStdioUsageImport import/E1-basic_stdio_usage.cc)
+        add_mcp_import_example(E2-BasicHttpUsageImport import/E2-basic_http_usage.cc)
+    endif()
+endif()

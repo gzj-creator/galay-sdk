@@ -1,0 +1,9 @@
+*.DS_Store
+.cache/
+*.log
+build/
+build-*/
+benchmark/results/
+dist/
+target/
+tmp/

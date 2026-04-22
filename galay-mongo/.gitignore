@@ -1,0 +1,9 @@
+build/
+build-*/
+cmake-build-*/
+.DS_Store
+*.swp
+*.swo
+.claude
+
+.claude/
