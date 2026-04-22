@@ -8,6 +8,12 @@
 
 ## [Unreleased]
 
+## [v0.2.1] - 2026-04-23
+
+### Changed
+- 同步 `galay-etcd`、`galay-http`、`galay-mongo` 与 `galay-mysql` 子目录中的源码包配置模板命名，统一改为小写 kebab-case 风格。
+- 更新聚合仓库内对应 `CMakeLists.txt` 的模板路径，保持各组件安装导出的包配置文件名与外部消费契约不变。
+
 ## [v0.2.0] - 2026-04-22
 
 ### Added

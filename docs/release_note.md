@@ -21,3 +21,12 @@
   - 将 `galay-sdk` 的对外语义收敛为“一个 `gdk` 版本对应多个 `galay-*` tag 集合”的版本矩阵源码发行仓库。
   - 新增 `scripts/sync_bundle.sh` 与 `scripts/verify_bundle.sh`，补齐源码同步、内容过滤与 bundle 校验自动化。
   - 扩展 `manifest.json` 字段，补充来源仓库、局部工作区路径与目标目录信息，并收紧编辑器缓存、benchmark 结果、日志与预编译二进制的过滤边界。
+
+## v0.2.1 - 2026-04-23
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 发布 v0.2.1`
+- Git Tag：`v0.2.1`
+- 自述摘要：
+  - 同步 `galay-etcd`、`galay-http`、`galay-mongo` 与 `galay-mysql` 子目录中的源码包配置模板命名，统一收敛为小写 kebab-case 风格。
+  - 更新聚合仓库内对应 `CMakeLists.txt` 的模板输入路径，继续保持各组件安装导出的包配置文件名与外部消费契约兼容不变。
