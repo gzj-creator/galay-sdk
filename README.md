@@ -9,7 +9,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the full source bundle directly
 - the repository excludes upstream `.git` history and generated artifacts
 
-Current bundle version: `v0.1.0`
+Current bundle version: `v0.2.0`
 
 ## Version Matrix
 

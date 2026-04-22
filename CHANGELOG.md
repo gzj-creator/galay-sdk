@@ -8,6 +8,8 @@
 
 ## [Unreleased]
 
+## [v0.2.0] - 2026-04-22
+
 ### Added
 - 新增 `scripts/sync_bundle.sh`，按 `manifest.json` 定义的版本矩阵同步 `galay-*` 源码快照。
 - 新增 `scripts/verify_bundle.sh`，校验 bundle 版本一致性与源码目录边界。
