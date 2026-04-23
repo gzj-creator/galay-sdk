@@ -8,6 +8,10 @@
 
 ## [Unreleased]
 
+### Changed
+- `galay-http` 默认改为仅在显式开启时编译测试目标，避免聚合仓库配置阶段隐式带出测试构建。
+- `galay-etcd` 子目录同步将 `GalayHttp` 依赖版本提升到 `2.1.0`，与聚合内 HTTP 组件版本保持一致。
+
 ## [v0.2.1] - 2026-04-23
 
 ### Changed
