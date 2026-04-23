@@ -40,3 +40,14 @@
   - 将 `VERSION`、`manifest.json` 与 `README.md` 的 bundle 版本统一对齐到 `v0.2.2`，修正当前版本矩阵显示与 source ref 记录。
   - 将 `galay-http`、`galay-etcd`、`galay-mcp` 的源码镜像分别同步到 `v2.1.2`、`v1.1.7`、`v1.1.3`，统一默认仅在显式开启时构建测试目标。
   - `galay-etcd` 镜像继续纳入 `GalayHttp 2.1.0` 依赖修正与收紧后的忽略规则，保持 bundle 内源码和最新 source tag 对齐。
+
+## v0.3.0 - 2026-04-23
+
+- 版本级别：中版本（minor）
+- Git 提交消息：`feat: 增加仓库抓取与依赖有序安装脚本`
+- Git Tag：`v0.3.0`
+- 自述摘要：
+  - 新增 `scripts/install_galay_repos.sh`，支持按 `manifest.json` 对 bundle 内所有 `galay-*` 组件批量执行 CMake configure/build/install，并提供 `--prefix`、`--jobs`、`--sudo`、`--dry-run` 参数。
+  - 安装流程新增依赖顺序和 `CMAKE_PREFIX_PATH` 注入机制，默认安装前缀改为 `./.galay-prefix/latest`，修复 `galay-etcd` 先于 `galay-http` 安装时的 `find_package` 依赖命中问题。
+  - 新增 `scripts/fetch_galay_repos.sh` 用于批量 clone/fetch sibling 源仓库并可按清单版本切换，同时补齐 `README.md` 与 `README-CN.md` 双语文档入口与使用示例。
+  - 收束此前未发版累计变更：同步多组件 CMake 包导出命名到小写 kebab-case、补齐 `verify_bundle.sh` 依赖下界校验，并完成 `galay-kernel`/`galay-rpc`/`galay-etcd`/`galay-utils` 版本矩阵修复。

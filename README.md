@@ -1,5 +1,7 @@
 # galay-sdk
 
+[中文说明](./README-CN.md)
+
 `galay-sdk` is the source distribution repository for the `galay-*`
 family.
 
@@ -9,7 +11,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the full source bundle directly
 - the repository excludes upstream `.git` history and generated artifacts
 
-Current bundle version: `v0.2.2`
+Current bundle version: `v0.3.0`
 
 ## Version Matrix
 
@@ -55,6 +57,61 @@ sh scripts/verify_bundle.sh --manifest manifest.json
 
 Use `--dry-run` on the sync step when you want to inspect the planned actions
 without rewriting the bundled source tree.
+
+## Install All `galay-*` Repositories
+
+Use the install helper to build and install all bundled `galay-*` components
+declared in [`manifest.json`](./manifest.json). The script uses the source tree
+already present in `galay-sdk` and runs a CMake workflow per component:
+`mkdir build` -> `cmake ..` -> `cmake --build` -> `cmake --install`.
+It builds in dependency order (for example `galay-kernel`/`galay-utils` before
+`galay-http`, then `galay-etcd`) and injects `CMAKE_PREFIX_PATH` automatically.
+
+By default it installs into a local prefix:
+`./.galay-prefix/latest`
+
+```sh
+sh scripts/install_galay_repos.sh --manifest manifest.json
+```
+
+Install to a custom prefix:
+
+```sh
+sh scripts/install_galay_repos.sh --manifest manifest.json --prefix /usr/local
+```
+
+Use `sudo` for the install phase:
+
+```sh
+sh scripts/install_galay_repos.sh --manifest manifest.json --prefix /usr/local --sudo
+```
+
+You can preview actions without building/installing:
+
+```sh
+sh scripts/install_galay_repos.sh --manifest manifest.json --dry-run
+```
+
+## Fetch All `galay-*` Source Repositories
+
+Use the fetch helper when you want to maintain sibling source repositories
+outside `galay-sdk` (clone if missing, otherwise fetch tags/refs).
+
+```sh
+sh scripts/fetch_galay_repos.sh --manifest manifest.json
+```
+
+You can also checkout each repository to the version declared in the manifest:
+
+```sh
+sh scripts/fetch_galay_repos.sh --manifest manifest.json --checkout-version
+```
+
+Preview mode:
+
+```sh
+sh scripts/fetch_galay_repos.sh --manifest manifest.json --dry-run
+```
 
 ## Content Boundary
 

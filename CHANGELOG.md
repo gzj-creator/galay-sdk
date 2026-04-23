@@ -8,7 +8,17 @@
 
 ## [Unreleased]
 
+## [v0.3.0] - 2026-04-23
+
+### Added
+- 新增 `scripts/install_galay_repos.sh`，可按 `manifest.json` 对 bundle 内全部 `galay-*` 组件批量执行 CMake configure/build/install，并支持 `--prefix`、`--jobs`、`--sudo` 与 `--dry-run` 参数。
+- 新增 `scripts/fetch_galay_repos.sh`，可按 `manifest.json` 批量维护 sibling 源仓库（缺失时 clone，存在时 fetch），并支持按清单 `--checkout-version` 统一切换版本。
+- 新增 `README-CN.md` 中文文档，补齐安装与抓取脚本的中文使用说明。
+
 ### Changed
+- 安装脚本按依赖顺序优先构建 `galay-kernel`、`galay-utils`、`galay-http` 等基础组件，并自动注入 `CMAKE_PREFIX_PATH`，避免组件安装顺序导致的 `find_package` 失败。
+- 安装默认前缀调整为仓库本地 `./.galay-prefix/latest`，减少系统全局旧版本 CMake 包配置对本次构建的干扰。
+- 英文 `README.md` 补充中英文互链，以及安装/抓取脚本参数示例与依赖顺序说明。
 - 同步 bundle 内 `galay-http`、`galay-etcd`、`galay-mysql`、`galay-mongo` 与 `galay-mcp` 的 CMake package 导出和依赖消费入口，统一为全小写 kebab-case 风格。
 - 移除 bundle 内 `GalayEtcd` / `GalayMysql` 兼容配置模板，安装后只保留小写包名与小写 targets 文件。
 

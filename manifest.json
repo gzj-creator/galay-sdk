@@ -1,6 +1,6 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v0.2.2",
+  "bundle_version": "v0.3.0",
   "release_date": "2026-04-23",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; bundled content is source-only and excludes generated artifacts",
   "sources": [
