@@ -30,3 +30,13 @@
 - 自述摘要：
   - 同步 `galay-etcd`、`galay-http`、`galay-mongo` 与 `galay-mysql` 子目录中的源码包配置模板命名，统一收敛为小写 kebab-case 风格。
   - 更新聚合仓库内对应 `CMakeLists.txt` 的模板输入路径，继续保持各组件安装导出的包配置文件名与外部消费契约兼容不变。
+
+## v0.2.2 - 2026-04-23
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 同步最新组件 tag 矩阵`
+- Git Tag：`v0.2.2`
+- 自述摘要：
+  - 将 `VERSION`、`manifest.json` 与 `README.md` 的 bundle 版本统一对齐到 `v0.2.2`，修正当前版本矩阵显示与 source ref 记录。
+  - 将 `galay-http`、`galay-etcd`、`galay-mcp` 的源码镜像分别同步到 `v2.1.2`、`v1.1.7`、`v1.1.3`，统一默认仅在显式开启时构建测试目标。
+  - `galay-etcd` 镜像继续纳入 `GalayHttp 2.1.0` 依赖修正与收紧后的忽略规则，保持 bundle 内源码和最新 source tag 对齐。

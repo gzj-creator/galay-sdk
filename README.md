@@ -9,7 +9,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the full source bundle directly
 - the repository excludes upstream `.git` history and generated artifacts
 
-Current bundle version: `v0.2.0`
+Current bundle version: `v0.2.2`
 
 ## Version Matrix
 
@@ -27,10 +27,10 @@ declares:
 
 | Repository | Source type | Included version | Source ref |
 | --- | --- | --- | --- |
-| `galay-etcd` | `git-tag-archive` | `v1.1.4` | `a3e57d9deb202f77542f3ee4761c1e9fc4cc6782` |
-| `galay-http` | `git-tag-archive` | `v2.0.2` | `3fdf5bf442e781370b51170c8c6dcc3aa62e5559` |
+| `galay-etcd` | `git-tag-archive` | `v1.1.7` | `2e1751cdb7286a5346a3f7e5a7c1453b989ddc84` |
+| `galay-http` | `git-tag-archive` | `v2.1.2` | `f90ef97d619ec7cb9c8b4343d9d17a457442be14` |
 | `galay-kernel` | `git-tag-archive` | `v3.4.4` | `c872cc3c7fd8a2c2b2d7a4c94c9230c5bb2907d6` |
-| `galay-mcp` | `git-tag-archive` | `v1.1.2` | `8c93e3c9954d8822cfcbf991e9bd1b6481bf25de` |
+| `galay-mcp` | `git-tag-archive` | `v1.1.3` | `e470fb1d9a6c1ebb5576009e8cf9b008ba9d6972` |
 | `galay-mongo` | `local-snapshot` | local snapshot | captured on `2026-04-22` |
 | `galay-mysql` | `git-tag-archive` | `v1.2.5` | `82fb561414d005420782f7aab40d0ce88297bb5d` |
 | `galay-redis` | `git-tag-archive` | `v1.2.2` | `082453047dba1350c51be8b4242f8c8404083f89` |

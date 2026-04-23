@@ -1,7 +1,7 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v0.2.0",
-  "release_date": "2026-04-22",
+  "bundle_version": "v0.2.2",
+  "release_date": "2026-04-23",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; bundled content is source-only and excludes generated artifacts",
   "sources": [
     {
@@ -11,8 +11,8 @@
       "repo": "https://github.com/gzj-creator/galay-etcd.git",
       "local_path": "../galay-etcd",
       "path": "galay-etcd",
-      "version": "v1.1.4",
-      "commit": "a3e57d9deb202f77542f3ee4761c1e9fc4cc6782"
+      "version": "v1.1.7",
+      "commit": "2e1751cdb7286a5346a3f7e5a7c1453b989ddc84"
     },
     {
       "name": "galay-http",
@@ -21,8 +21,8 @@
       "repo": "https://github.com/gzj-creator/galay-http.git",
       "local_path": "../galay-http",
       "path": "galay-http",
-      "version": "v2.0.2",
-      "commit": "3fdf5bf442e781370b51170c8c6dcc3aa62e5559"
+      "version": "v2.1.2",
+      "commit": "f90ef97d619ec7cb9c8b4343d9d17a457442be14"
     },
     {
       "name": "galay-kernel",
@@ -41,8 +41,8 @@
       "repo": "https://github.com/gzj-creator/galay-mcp.git",
       "local_path": "../galay-mcp",
       "path": "galay-mcp",
-      "version": "v1.1.2",
-      "commit": "8c93e3c9954d8822cfcbf991e9bd1b6481bf25de"
+      "version": "v1.1.3",
+      "commit": "e470fb1d9a6c1ebb5576009e8cf9b008ba9d6972"
     },
     {
       "name": "galay-mongo",

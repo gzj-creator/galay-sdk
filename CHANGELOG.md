@@ -8,9 +8,12 @@
 
 ## [Unreleased]
 
+## [v0.2.2] - 2026-04-23
+
 ### Changed
-- `galay-http` 默认改为仅在显式开启时编译测试目标，避免聚合仓库配置阶段隐式带出测试构建。
-- `galay-etcd` 子目录同步将 `GalayHttp` 依赖版本提升到 `2.1.0`，与聚合内 HTTP 组件版本保持一致。
+- 将 `galay-http`、`galay-etcd`、`galay-mcp` 的源码镜像分别同步到 `v2.1.2`、`v1.1.7`、`v1.1.3`，统一默认仅在显式开启时构建测试目标。
+- `galay-etcd` 镜像同时纳入 `GalayHttp 2.1.0` 依赖修正、发布文档和 `.gitignore` 收敛，保持 bundle 内源码与最新 source tag 一致。
+- 刷新版本矩阵中的 source ref，并将 `VERSION`、`manifest.json`、`README.md` 的 bundle 版本统一对齐到 `v0.2.2`。
 
 ## [v0.2.1] - 2026-04-23
 
