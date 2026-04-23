@@ -34,7 +34,7 @@ declares:
 | `galay-mongo` | `local-snapshot` | local snapshot | captured on `2026-04-22` |
 | `galay-mysql` | `git-tag-archive` | `v1.2.5` | `82fb561414d005420782f7aab40d0ce88297bb5d` |
 | `galay-redis` | `git-tag-archive` | `v1.2.2` | `082453047dba1350c51be8b4242f8c8404083f89` |
-| `galay-rpc` | `git-tag-archive` | `v1.1.2` | `f309242e9b0e090cd59ecabd9c14d5eba0d2f820` |
+| `galay-rpc` | `git-tag-archive` | `v1.1.3` | `51ac066edd5d2c2ae0493fcb9436d9cda4103561` |
 | `galay-ssl` | `git-tag-archive` | `v1.2.2` | `cb1d2f9a2d7729b651ce1170f7a5cd75a74be119` |
 | `galay-utils` | `git-tag-archive` | `v1.2.0` | `60be94ab601a2965e216fdf02d9a611907c3fac9` |
 
