@@ -65,8 +65,9 @@ require_cmd docker
 
 BUNDLE_ROOT="${GALAY_SDK_ROOT:-$(detect_bundle_root)}"
 IMAGE_TAG="${IMAGE_TAG:-$(detect_image_tag "${BUNDLE_ROOT}")}"
-RUNTIME_IMAGE_EPOLL="${RUNTIME_IMAGE_EPOLL:-galay-sdk-epoll:${IMAGE_TAG}}"
-RUNTIME_IMAGE_URING="${RUNTIME_IMAGE_URING:-galay-sdk-uring:${IMAGE_TAG}}"
+GALAY_DISABLE_IOURING="${GALAY_DISABLE_IOURING:-ON}"
+COMPILE_IMAGE="${COMPILE_IMAGE:-galay-sdk-compile:${IMAGE_TAG}}"
+RUNTIME_IMAGE="${RUNTIME_IMAGE:-galay-sdk-runtime:${IMAGE_TAG}}"
 if [[ -n "${STAGE_ROOT}" ]]; then
     mkdir -p "${STAGE_ROOT}"
     STAGE_DIR="$(mktemp -d "${STAGE_ROOT%/}/galay-sdk-context.XXXXXX")"
@@ -113,13 +114,17 @@ find "${STAGE_DIR}" -name '.DS_Store' -delete
 echo "bundle root: ${BUNDLE_ROOT}"
 echo "concurrentqueue root: ${CONCURRENTQUEUE_ROOT}"
 echo "image tag: ${IMAGE_TAG}"
+echo "disable io_uring: ${GALAY_DISABLE_IOURING}"
+echo "compile image: ${COMPILE_IMAGE}"
+echo "runtime image: ${RUNTIME_IMAGE}"
 echo "staged docker context: ${STAGE_DIR}"
 
 (
     cd "${STAGE_DIR}"
     IMAGE_TAG="${IMAGE_TAG}" \
-    RUNTIME_IMAGE_EPOLL="${RUNTIME_IMAGE_EPOLL}" \
-    RUNTIME_IMAGE_URING="${RUNTIME_IMAGE_URING}" \
+    GALAY_DISABLE_IOURING="${GALAY_DISABLE_IOURING}" \
+    COMPILE_IMAGE="${COMPILE_IMAGE}" \
+    RUNTIME_IMAGE="${RUNTIME_IMAGE}" \
     VERIFY_DIR="${SCRIPT_DIR}/verify" \
     OUT_DIR="${OUT_DIR}" \
     ./build-images.sh
