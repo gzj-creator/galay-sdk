@@ -125,4 +125,77 @@ if sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.js
     fail "expected galay-http kernel version drift to fail verification"
 fi
 
+UTILS_ROOT="$BUNDLE_ROOT/galay-utils"
+mkdir -p "$UTILS_ROOT"
+cat > "$UTILS_ROOT/CMakeLists.txt" <<'EOF'
+cmake_minimum_required(VERSION 3.16)
+project(galay-utils VERSION 1.0.0 LANGUAGES CXX)
+EOF
+cat > "$BUNDLE_ROOT/manifest.json" <<'EOF'
+{
+  "bundle_name": "fixture-gdk",
+  "bundle_version": "v1.2.3",
+  "release_date": "2026-04-22",
+  "sources": [
+    {
+      "name": "galay-utils",
+      "source_type": "local-snapshot",
+      "repo": "/tmp/galay-utils",
+      "local_path": "/tmp/galay-utils",
+      "path": "galay-utils",
+      "version": "v1.2.0",
+      "commit": null,
+      "captured_at": "2026-04-22"
+    }
+  ]
+}
+EOF
+if sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.json"; then
+    fail "expected galay-utils project version drift to fail verification"
+fi
+
+ETCD_ROOT="$BUNDLE_ROOT/galay-etcd"
+mkdir -p "$ETCD_ROOT"
+cat > "$ETCD_ROOT/CMakeLists.txt" <<'EOF'
+cmake_minimum_required(VERSION 3.20)
+project(galay-etcd VERSION 1.1.8 LANGUAGES CXX)
+find_package(galay-utils 1.0.3 CONFIG REQUIRED)
+EOF
+cat > "$UTILS_ROOT/CMakeLists.txt" <<'EOF'
+cmake_minimum_required(VERSION 3.16)
+project(galay-utils VERSION 1.0.2 LANGUAGES CXX)
+EOF
+cat > "$BUNDLE_ROOT/manifest.json" <<'EOF'
+{
+  "bundle_name": "fixture-gdk",
+  "bundle_version": "v1.2.3",
+  "release_date": "2026-04-22",
+  "sources": [
+    {
+      "name": "galay-utils",
+      "source_type": "local-snapshot",
+      "repo": "/tmp/galay-utils",
+      "local_path": "/tmp/galay-utils",
+      "path": "galay-utils",
+      "version": "v1.0.2",
+      "commit": null,
+      "captured_at": "2026-04-22"
+    },
+    {
+      "name": "galay-etcd",
+      "source_type": "local-snapshot",
+      "repo": "/tmp/galay-etcd",
+      "local_path": "/tmp/galay-etcd",
+      "path": "galay-etcd",
+      "version": "v1.1.8",
+      "commit": null,
+      "captured_at": "2026-04-22"
+    }
+  ]
+}
+EOF
+if sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.json"; then
+    fail "expected galay-utils dependency drift to fail verification"
+fi
+
 printf '%s\n' "ok"

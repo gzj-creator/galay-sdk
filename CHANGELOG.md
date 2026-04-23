@@ -15,6 +15,8 @@
 - 补齐 bundle 内 `galay-rpc` 的 `config-version` 导出链路，修复下游按版本约束消费 `find_package(galay-rpc 1.1.2 REQUIRED CONFIG)` 时的兼容性判定失败。
 - 将 `galay-etcd` 源码镜像同步到 `v1.1.8`，修复 `find_package(GalayEtcd CONFIG REQUIRED)` 无法自动发现安装包的问题。
 - 为 bundle 内 `galay-etcd` 补齐 `GalayEtcd` 主入口与 `galay-etcd` 兼容入口，避免 verify 阶段继续卡在包配置查找失败。
+- 将 `galay-utils` 源码镜像同步到 `v1.2.1`，修复 manifest 声明 `v1.2.0` 但镜像实际缺少 `config-version` 导出链路的漂移。
+- 为 `scripts/verify_bundle.sh` 增加 `galay-utils` 源码版本与依赖下界校验，提前拦截 `galay-etcd` / `galay-redis` 等组件要求高于 bundle 内置 utils 版本的情况。
 
 ## [v0.2.2] - 2026-04-23
 

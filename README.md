@@ -36,7 +36,7 @@ declares:
 | `galay-redis` | `git-tag-archive` | `v1.2.2` | `082453047dba1350c51be8b4242f8c8404083f89` |
 | `galay-rpc` | `git-tag-archive` | `v1.1.3` | `51ac066edd5d2c2ae0493fcb9436d9cda4103561` |
 | `galay-ssl` | `git-tag-archive` | `v1.2.2` | `cb1d2f9a2d7729b651ce1170f7a5cd75a74be119` |
-| `galay-utils` | `git-tag-archive` | `v1.2.0` | `60be94ab601a2965e216fdf02d9a611907c3fac9` |
+| `galay-utils` | `git-tag-archive` | `v1.2.1` | `1ce934b6f914918e3ddcb585bb806dd07ec0fa31` |
 
 ## Update Workflow
 
@@ -71,8 +71,8 @@ that belong to each component. It filters out generated content such as:
 
 ## Notes
 
-- `galay-utils` is exported from the highest released tag `v1.2.0`, which is
-  newer than the current local branch tip.
+- `galay-utils` is exported from the highest released tag `v1.2.1`, aligned
+  with the current source-repo package version metadata.
 - `galay-http` and `galay-kernel` are also exported from their highest released
   tags rather than from unreleased local branch state.
 - `galay-mongo` is currently tracked as a local snapshot source and should be
