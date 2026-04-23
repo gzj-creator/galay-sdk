@@ -11,8 +11,8 @@
       "repo": "https://github.com/gzj-creator/galay-etcd.git",
       "local_path": "../galay-etcd",
       "path": "galay-etcd",
-      "version": "v1.1.7",
-      "commit": "2e1751cdb7286a5346a3f7e5a7c1453b989ddc84"
+      "version": "v1.1.8",
+      "commit": "549634bca9991c8f42741336252f5aa2772400d5"
     },
     {
       "name": "galay-http",

@@ -27,7 +27,7 @@ declares:
 
 | Repository | Source type | Included version | Source ref |
 | --- | --- | --- | --- |
-| `galay-etcd` | `git-tag-archive` | `v1.1.7` | `2e1751cdb7286a5346a3f7e5a7c1453b989ddc84` |
+| `galay-etcd` | `git-tag-archive` | `v1.1.8` | `549634bca9991c8f42741336252f5aa2772400d5` |
 | `galay-http` | `git-tag-archive` | `v2.1.2` | `f90ef97d619ec7cb9c8b4343d9d17a457442be14` |
 | `galay-kernel` | `git-tag-archive` | `v3.4.5` | `b39b3afc089e56589a8076915b7128c2fa38591c` |
 | `galay-mcp` | `git-tag-archive` | `v1.1.3` | `e470fb1d9a6c1ebb5576009e8cf9b008ba9d6972` |
