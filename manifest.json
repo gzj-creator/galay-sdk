@@ -82,8 +82,8 @@
       "repo": "https://github.com/gzj-creator/galay-rpc.git",
       "local_path": "../galay-rpc",
       "path": "galay-rpc",
-      "version": "v1.1.2",
-      "commit": "f309242e9b0e090cd59ecabd9c14d5eba0d2f820"
+      "version": "v1.1.3",
+      "commit": "51ac066edd5d2c2ae0493fcb9436d9cda4103561"
     },
     {
       "name": "galay-ssl",

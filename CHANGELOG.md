@@ -11,6 +11,8 @@
 ### Fixed
 - 将 `galay-kernel` 源码镜像从 `v3.4.4` 同步到 `v3.4.5`，补齐 `galay-http` 对内核 `3.4.5` 依赖的 bundle 版本矩阵。
 - 为 `scripts/verify_bundle.sh` 增加 `galay-kernel` 依赖下界校验，提前拦截 bundle 内组件要求高于内置内核版本的漂移。
+- 将 `galay-rpc` 源码镜像同步到 `v1.1.3`，统一默认仅在显式开启时构建测试目标。
+- 补齐 bundle 内 `galay-rpc` 的 `config-version` 导出链路，修复下游按版本约束消费 `find_package(galay-rpc 1.1.2 REQUIRED CONFIG)` 时的兼容性判定失败。
 
 ## [v0.2.2] - 2026-04-23
 
