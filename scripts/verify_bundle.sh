@@ -45,6 +45,62 @@ README_FILE="$BUNDLE_ROOT/README.md"
 [ -f "$README_FILE" ] || die "README.md is missing: $README_FILE"
 grep -F "$BUNDLE_VERSION" "$README_FILE" >/dev/null 2>&1 || die "README.md does not mention bundle version $BUNDLE_VERSION"
 
+normalize_semver() {
+    printf '%s\n' "$1" | sed 's/^[^0-9]*//'
+}
+
+version_gt() {
+    lhs=$(normalize_semver "$1")
+    rhs=$(normalize_semver "$2")
+
+    awk -v lhs="$lhs" -v rhs="$rhs" '
+        BEGIN {
+            split(lhs, a, ".")
+            split(rhs, b, ".")
+
+            for (i = 1; i <= 3; ++i) {
+                lhs_part = (a[i] == "" ? 0 : a[i]) + 0
+                rhs_part = (b[i] == "" ? 0 : b[i]) + 0
+
+                if (lhs_part > rhs_part) {
+                    exit 0
+                }
+                if (lhs_part < rhs_part) {
+                    exit 1
+                }
+            }
+
+            exit 1
+        }
+    '
+}
+
+scan_required_galay_kernel_version() {
+    source_root=$1
+    max_required=""
+
+    while IFS= read -r file; do
+        [ -n "$file" ] || continue
+
+        matches=$(grep -hE 'find_(package|dependency)\(galay-kernel[[:space:]]+[0-9]+\.[0-9]+\.[0-9]+' "$file" || true)
+        [ -n "$matches" ] || continue
+
+        while IFS= read -r match; do
+            [ -n "$match" ] || continue
+            required=$(printf '%s\n' "$match" | sed -E 's/.*galay-kernel[[:space:]]+([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+            if [ -z "$max_required" ] || version_gt "$required" "$max_required"; then
+                max_required=$required
+            fi
+        done <<EOF_MATCHES
+$matches
+EOF_MATCHES
+    done <<EOF_FILES
+$(find "$source_root" -type f \( -name 'CMakeLists.txt' -o -name '*.cmake' -o -name '*.cmake.in' \))
+EOF_FILES
+
+    printf '%s\n' "$max_required"
+}
+
 resolve_expected_commit() {
     repo=$1
     local_path=$2
@@ -79,6 +135,8 @@ resolve_expected_commit() {
 }
 
 source_count=$(jq '.sources | length' "$MANIFEST_ABS")
+BUNDLED_KERNEL_VERSION=$(jq -r '.sources[] | select(.name == "galay-kernel") | .version // empty' "$MANIFEST_ABS" | head -n 1)
+BUNDLED_KERNEL_VERSION=$(normalize_semver "$BUNDLED_KERNEL_VERSION")
 index=0
 
 while [ "$index" -lt "$source_count" ]; do
@@ -103,6 +161,13 @@ while [ "$index" -lt "$source_count" ]; do
         [ -n "$commit" ] || die "git-tag-archive source '$name' is missing commit"
         expected_commit=$(resolve_expected_commit "$repo" "$local_path" "$version") || die "failed to resolve expected commit for '$name'"
         [ "$expected_commit" = "$commit" ] || die "commit mismatch for '$name': manifest=$commit expected=$expected_commit"
+    fi
+
+    if [ -n "$BUNDLED_KERNEL_VERSION" ] && [ "$name" != "galay-kernel" ]; then
+        required_kernel_version=$(scan_required_galay_kernel_version "$source_root")
+        if [ -n "$required_kernel_version" ] && version_gt "$required_kernel_version" "$BUNDLED_KERNEL_VERSION"; then
+            die "bundled galay-kernel version $BUNDLED_KERNEL_VERSION is lower than '$name' requirement $required_kernel_version"
+        fi
     fi
 
     index=$((index + 1))

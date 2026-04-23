@@ -8,6 +8,10 @@
 
 ## [Unreleased]
 
+### Fixed
+- 将 `galay-kernel` 源码镜像从 `v3.4.4` 同步到 `v3.4.5`，补齐 `galay-http` 对内核 `3.4.5` 依赖的 bundle 版本矩阵。
+- 为 `scripts/verify_bundle.sh` 增加 `galay-kernel` 依赖下界校验，提前拦截 bundle 内组件要求高于内置内核版本的漂移。
+
 ## [v0.2.2] - 2026-04-23
 
 ### Changed

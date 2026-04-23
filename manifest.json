@@ -31,8 +31,8 @@
       "repo": "https://github.com/gzj-creator/galay-kernel.git",
       "local_path": "../galay-kernel",
       "path": "galay-kernel",
-      "version": "v3.4.4",
-      "commit": "c872cc3c7fd8a2c2b2d7a4c94c9230c5bb2907d6"
+      "version": "v3.4.5",
+      "commit": "b39b3afc089e56589a8076915b7128c2fa38591c"
     },
     {
       "name": "galay-mcp",

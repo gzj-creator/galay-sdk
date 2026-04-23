@@ -29,7 +29,7 @@ declares:
 | --- | --- | --- | --- |
 | `galay-etcd` | `git-tag-archive` | `v1.1.7` | `2e1751cdb7286a5346a3f7e5a7c1453b989ddc84` |
 | `galay-http` | `git-tag-archive` | `v2.1.2` | `f90ef97d619ec7cb9c8b4343d9d17a457442be14` |
-| `galay-kernel` | `git-tag-archive` | `v3.4.4` | `c872cc3c7fd8a2c2b2d7a4c94c9230c5bb2907d6` |
+| `galay-kernel` | `git-tag-archive` | `v3.4.5` | `b39b3afc089e56589a8076915b7128c2fa38591c` |
 | `galay-mcp` | `git-tag-archive` | `v1.1.3` | `e470fb1d9a6c1ebb5576009e8cf9b008ba9d6972` |
 | `galay-mongo` | `local-snapshot` | local snapshot | captured on `2026-04-22` |
 | `galay-mysql` | `git-tag-archive` | `v1.2.5` | `82fb561414d005420782f7aab40d0ce88297bb5d` |

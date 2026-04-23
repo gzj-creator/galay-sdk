@@ -75,4 +75,54 @@ if sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.js
     fail "expected benchmark results to fail verification"
 fi
 
+KERNEL_ROOT="$BUNDLE_ROOT/galay-kernel"
+HTTP_ROOT="$BUNDLE_ROOT/galay-http"
+mkdir -p "$KERNEL_ROOT" "$HTTP_ROOT/cmake"
+cat > "$KERNEL_ROOT/CMakeLists.txt" <<'EOF'
+cmake_minimum_required(VERSION 3.16)
+project(galay-kernel VERSION 3.4.4 LANGUAGES CXX)
+EOF
+cat > "$HTTP_ROOT/CMakeLists.txt" <<'EOF'
+cmake_minimum_required(VERSION 3.22)
+project(galay-http VERSION 2.1.2 LANGUAGES CXX)
+find_package(galay-kernel 3.4.5 REQUIRED CONFIG)
+EOF
+cat > "$HTTP_ROOT/cmake/galay-http-config.cmake.in" <<'EOF'
+@PACKAGE_INIT@
+include(CMakeFindDependencyMacro)
+find_dependency(galay-kernel 3.4.5 REQUIRED CONFIG)
+EOF
+cat > "$BUNDLE_ROOT/manifest.json" <<'EOF'
+{
+  "bundle_name": "fixture-gdk",
+  "bundle_version": "v1.2.3",
+  "release_date": "2026-04-22",
+  "sources": [
+    {
+      "name": "galay-kernel",
+      "source_type": "local-snapshot",
+      "repo": "/tmp/galay-kernel",
+      "local_path": "/tmp/galay-kernel",
+      "path": "galay-kernel",
+      "version": "v3.4.4",
+      "commit": null,
+      "captured_at": "2026-04-22"
+    },
+    {
+      "name": "galay-http",
+      "source_type": "local-snapshot",
+      "repo": "/tmp/galay-http",
+      "local_path": "/tmp/galay-http",
+      "path": "galay-http",
+      "version": "v2.1.2",
+      "commit": null,
+      "captured_at": "2026-04-22"
+    }
+  ]
+}
+EOF
+if sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.json"; then
+    fail "expected galay-http kernel version drift to fail verification"
+fi
+
 printf '%s\n' "ok"
