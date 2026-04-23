@@ -102,8 +102,8 @@
       "repo": "https://github.com/gzj-creator/galay-utils.git",
       "local_path": "../galay-utils",
       "path": "galay-utils",
-      "version": "v1.2.0",
-      "commit": "60be94ab601a2965e216fdf02d9a611907c3fac9"
+      "version": "v1.2.1",
+      "commit": "1ce934b6f914918e3ddcb585bb806dd07ec0fa31"
     }
   ]
 }

@@ -1,8 +1,11 @@
 # Build directories
 build/
+build-*/
 cmake-build-*/
 out/
 bin/
 lib/
 
+# IDE and cache
 .claude/
+.cache/

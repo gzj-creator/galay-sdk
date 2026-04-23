@@ -75,19 +75,20 @@ version_gt() {
     '
 }
 
-scan_required_galay_kernel_version() {
-    source_root=$1
+scan_required_package_version() {
+    package_name=$1
+    source_root=$2
     max_required=""
 
     while IFS= read -r file; do
         [ -n "$file" ] || continue
 
-        matches=$(grep -hE 'find_(package|dependency)\(galay-kernel[[:space:]]+[0-9]+\.[0-9]+\.[0-9]+' "$file" || true)
+        matches=$(grep -hE "find_(package|dependency)\(${package_name}[[:space:]]+[0-9]+\.[0-9]+\.[0-9]+" "$file" || true)
         [ -n "$matches" ] || continue
 
         while IFS= read -r match; do
             [ -n "$match" ] || continue
-            required=$(printf '%s\n' "$match" | sed -E 's/.*galay-kernel[[:space:]]+([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
+            required=$(printf '%s\n' "$match" | sed -E "s/.*${package_name}[[:space:]]+([0-9]+\.[0-9]+\.[0-9]+).*/\\1/")
             if [ -z "$max_required" ] || version_gt "$required" "$max_required"; then
                 max_required=$required
             fi
@@ -99,6 +100,18 @@ $(find "$source_root" -type f \( -name 'CMakeLists.txt' -o -name '*.cmake' -o -n
 EOF_FILES
 
     printf '%s\n' "$max_required"
+}
+
+scan_project_version() {
+    source_root=$1
+    cmake_file="$source_root/CMakeLists.txt"
+
+    [ -f "$cmake_file" ] || return 0
+
+    match=$(grep -E 'project\([^)]*VERSION[[:space:]]+[0-9]+\.[0-9]+\.[0-9]+' "$cmake_file" | head -n 1 || true)
+    [ -n "$match" ] || return 0
+
+    printf '%s\n' "$match" | sed -E 's/.*VERSION[[:space:]]+([0-9]+\.[0-9]+\.[0-9]+).*/\1/'
 }
 
 resolve_expected_commit() {
@@ -137,6 +150,8 @@ resolve_expected_commit() {
 source_count=$(jq '.sources | length' "$MANIFEST_ABS")
 BUNDLED_KERNEL_VERSION=$(jq -r '.sources[] | select(.name == "galay-kernel") | .version // empty' "$MANIFEST_ABS" | head -n 1)
 BUNDLED_KERNEL_VERSION=$(normalize_semver "$BUNDLED_KERNEL_VERSION")
+BUNDLED_UTILS_VERSION=$(jq -r '.sources[] | select(.name == "galay-utils") | .version // empty' "$MANIFEST_ABS" | head -n 1)
+BUNDLED_UTILS_VERSION=$(normalize_semver "$BUNDLED_UTILS_VERSION")
 index=0
 
 while [ "$index" -lt "$source_count" ]; do
@@ -163,10 +178,26 @@ while [ "$index" -lt "$source_count" ]; do
         [ "$expected_commit" = "$commit" ] || die "commit mismatch for '$name': manifest=$commit expected=$expected_commit"
     fi
 
+    if [ -n "$version" ]; then
+        project_version=$(scan_project_version "$source_root")
+        if [ -n "$project_version" ]; then
+            manifest_version=$(normalize_semver "$version")
+            project_version=$(normalize_semver "$project_version")
+            [ "$project_version" = "$manifest_version" ] || die "project version mismatch for '$name': source=$project_version manifest=$manifest_version"
+        fi
+    fi
+
     if [ -n "$BUNDLED_KERNEL_VERSION" ] && [ "$name" != "galay-kernel" ]; then
-        required_kernel_version=$(scan_required_galay_kernel_version "$source_root")
+        required_kernel_version=$(scan_required_package_version galay-kernel "$source_root")
         if [ -n "$required_kernel_version" ] && version_gt "$required_kernel_version" "$BUNDLED_KERNEL_VERSION"; then
             die "bundled galay-kernel version $BUNDLED_KERNEL_VERSION is lower than '$name' requirement $required_kernel_version"
+        fi
+    fi
+
+    if [ -n "$BUNDLED_UTILS_VERSION" ] && [ "$name" != "galay-utils" ]; then
+        required_utils_version=$(scan_required_package_version galay-utils "$source_root")
+        if [ -n "$required_utils_version" ] && version_gt "$required_utils_version" "$BUNDLED_UTILS_VERSION"; then
+            die "bundled galay-utils version $BUNDLED_UTILS_VERSION is lower than '$name' requirement $required_utils_version"
         fi
     fi
 
