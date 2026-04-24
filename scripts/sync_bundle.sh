@@ -13,6 +13,7 @@ require_cmd jq
 require_cmd tar
 
 MANIFEST_PATH=
+OUTPUT_PATH=
 DRY_RUN=0
 
 while [ "$#" -gt 0 ]; do
@@ -25,6 +26,11 @@ while [ "$#" -gt 0 ]; do
         --dry-run)
             DRY_RUN=1
             ;;
+        --output)
+            shift
+            [ "$#" -gt 0 ] || die "missing value for --output"
+            OUTPUT_PATH=$1
+            ;;
         *)
             die "unknown argument: $1"
             ;;
@@ -34,9 +40,11 @@ done
 
 [ -n "$MANIFEST_PATH" ] || die "--manifest is required"
 [ -f "$MANIFEST_PATH" ] || die "manifest file not found: $MANIFEST_PATH"
+[ -n "$OUTPUT_PATH" ] || die "--output is required"
 
 MANIFEST_ABS=$(manifest_abspath "$MANIFEST_PATH")
-BUNDLE_ROOT=$(bundle_root_from_manifest "$MANIFEST_ABS")
+SOURCE_ROOT=$(bundle_root_from_manifest "$MANIFEST_ABS")
+OUTPUT_ROOT=$(resolve_optional_path "$OUTPUT_PATH" "$(pwd)") || die "failed to resolve output path: $OUTPUT_PATH"
 TODAY=$(today_ymd)
 TEMP_ROOT=$(create_temp_dir)
 WORKING_MANIFEST="$TEMP_ROOT/manifest.json"
@@ -49,18 +57,20 @@ trap cleanup EXIT INT TERM HUP
 
 cp "$MANIFEST_ABS" "$WORKING_MANIFEST"
 
+[ "$OUTPUT_ROOT" != "$SOURCE_ROOT" ] || die "--output must not be the workspace root"
+
 resolve_repo_path() {
     repo_field=$1
     local_path_field=$2
 
-    if resolved=$(resolve_optional_path "$local_path_field" "$BUNDLE_ROOT" 2>/dev/null); then
+    if resolved=$(resolve_optional_path "$local_path_field" "$SOURCE_ROOT" 2>/dev/null); then
         if [ -d "$resolved" ]; then
             printf '%s\n' "$resolved"
             return 0
         fi
     fi
 
-    if resolved=$(resolve_optional_path "$repo_field" "$BUNDLE_ROOT" 2>/dev/null); then
+    if resolved=$(resolve_optional_path "$repo_field" "$SOURCE_ROOT" 2>/dev/null); then
         if [ -d "$resolved" ]; then
             printf '%s\n' "$resolved"
             return 0
@@ -148,7 +158,7 @@ sync_git_archive() {
 
     [ -n "$version" ] || die "git-tag-archive source '$name' is missing version"
 
-    target_dir="$BUNDLE_ROOT/$path"
+    target_dir="$OUTPUT_ROOT/$path"
 
     if repo_path=$(resolve_repo_path "$repo" "$local_path"); then
         commit=$(git -C "$repo_path" rev-parse "$version^{}") || die "failed to resolve tag '$version' in $repo_path"
@@ -207,7 +217,7 @@ sync_local_snapshot() {
         die "local-snapshot source '$name' requires an accessible local directory"
     fi
 
-    target_dir="$BUNDLE_ROOT/$path"
+    target_dir="$OUTPUT_ROOT/$path"
 
     if [ "$DRY_RUN" -eq 1 ]; then
         log "dry-run: copy $name from $source_path -> $target_dir"
@@ -222,6 +232,12 @@ sync_local_snapshot() {
 
 source_count=$(jq '.sources | length' "$WORKING_MANIFEST")
 index=0
+
+if [ "$DRY_RUN" -eq 1 ]; then
+    log "dry-run: export sources from $SOURCE_ROOT -> $OUTPUT_ROOT"
+else
+    clean_dir "$OUTPUT_ROOT"
+fi
 
 while [ "$index" -lt "$source_count" ]; do
     name=$(jq -r ".sources[$index].name // empty" "$WORKING_MANIFEST")
@@ -252,5 +268,7 @@ done
 
 if [ "$DRY_RUN" -eq 0 ]; then
     update_release_date
-    cp "$WORKING_MANIFEST" "$MANIFEST_ABS"
+    cp "$WORKING_MANIFEST" "$OUTPUT_ROOT/manifest.json"
 fi
+
+log "done: galay sources were exported from $MANIFEST_ABS to $OUTPUT_ROOT"

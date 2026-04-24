@@ -8,7 +8,7 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 
 MANIFEST_PATH="$SCRIPT_DIR/../manifest.json"
 DRY_RUN=0
-CHECKOUT_VERSION=0
+CHECKOUT_VERSION=1
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
@@ -19,6 +19,9 @@ while [ "$#" -gt 0 ]; do
             ;;
         --checkout-version)
             CHECKOUT_VERSION=1
+            ;;
+        --no-checkout-version)
+            CHECKOUT_VERSION=0
             ;;
         --dry-run)
             DRY_RUN=1
@@ -47,7 +50,7 @@ resolve_target_dir() {
         return 0
     fi
 
-    printf '%s/%s\n' "$BUNDLE_ROOT/.." "$repo_name"
+    printf '%s/%s\n' "$BUNDLE_ROOT" "$repo_name"
 }
 
 repo_count=$(jq '.sources | length' "$MANIFEST_ABS")
@@ -87,7 +90,7 @@ while [ "$index" -lt "$repo_count" ]; do
             log "dry-run: fetch tags in $target_dir"
         else
             log "fetch: $name ($target_dir)"
-            git -C "$target_dir" fetch --tags --prune origin
+            git -C "$target_dir" fetch --tags --prune --force origin
         fi
     elif [ -d "$target_dir" ]; then
         die "target exists but is not a git repo: $target_dir"

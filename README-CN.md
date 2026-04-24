@@ -2,15 +2,15 @@
 
 [English](./README.md)
 
-`galay-sdk` 是 `galay-*` 系列仓库的源码分发仓库。
+`galay-sdk` 是 `galay-*` 系列仓库的清单与工具工作区。
 
 核心规则：
 
 - 一个 `gdk` 版本对应一组固定的 `galay-*` tag 矩阵
-- 克隆某个 `gdk` tag 后可直接获得完整源码包
-- 仓库不包含上游 `.git` 历史和生成产物
+- 克隆某个 `gdk` tag 后可获得确定版本矩阵及本地落库脚本
+- 本地 `galay-*` 工作树位于仓库根目录下，但不纳入版本控制
 
-当前 bundle 版本：`v0.3.0`
+当前 bundle 版本：`v1.0.0`
 
 ## 版本矩阵
 
@@ -27,12 +27,12 @@
 
 | 仓库 | 来源类型 | 收录版本 | 来源引用 |
 | --- | --- | --- | --- |
-| `galay-etcd` | `git-tag-archive` | `v1.1.8` | `549634bca9991c8f42741336252f5aa2772400d5` |
-| `galay-http` | `git-tag-archive` | `v2.1.2` | `f90ef97d619ec7cb9c8b4343d9d17a457442be14` |
+| `galay-etcd` | `git-tag-archive` | `v1.1.8` | `6f8d2dda295e0e3ed96b2d4cc2df4a88cb68482f` |
+| `galay-http` | `git-tag-archive` | `v2.1.2` | `67daa6c1e76cbed8189c562dbaf6379e9e2760ea` |
 | `galay-kernel` | `git-tag-archive` | `v3.4.5` | `b39b3afc089e56589a8076915b7128c2fa38591c` |
-| `galay-mcp` | `git-tag-archive` | `v1.1.3` | `e470fb1d9a6c1ebb5576009e8cf9b008ba9d6972` |
+| `galay-mcp` | `git-tag-archive` | `v1.1.3` | `a206d70dd1aeafd90b642b384cae761ad20de645` |
 | `galay-mongo` | `local-snapshot` | 本地快照 | 捕获于 `2026-04-22` |
-| `galay-mysql` | `git-tag-archive` | `v1.2.5` | `82fb561414d005420782f7aab40d0ce88297bb5d` |
+| `galay-mysql` | `git-tag-archive` | `v1.2.6` | `f43cb41503ab36f012ce7ea7cdf166344b8a1a64` |
 | `galay-redis` | `git-tag-archive` | `v1.2.2` | `082453047dba1350c51be8b4242f8c8404083f89` |
 | `galay-rpc` | `git-tag-archive` | `v1.1.3` | `51ac066edd5d2c2ae0493fcb9436d9cda4103561` |
 | `galay-ssl` | `git-tag-archive` | `v1.2.2` | `cb1d2f9a2d7729b651ce1170f7a5cd75a74be119` |
@@ -41,24 +41,25 @@
 ## 更新流程
 
 1. 修改 [`manifest.json`](./manifest.json)，选定下一版 `galay-*` tag 矩阵。
-2. 运行同步脚本，把声明的来源导出到 bundle 目录。
-3. 运行校验脚本，确认版本和内容边界正确。
-4. 更新 [`CHANGELOG.md`](./CHANGELOG.md) 与 [`docs/release_note.md`](./docs/release_note.md)。
-5. 提交 bundle 更新，并打下一个 `gdk` tag。
+2. 运行抓取脚本，把 `manifest` 声明的 `galay-*` 仓库拉到当前工作区根目录，并默认切到清单指定版本。
+3. 运行校验脚本，确认本地版本矩阵正确。
+4. 需要导出源码包时，再把同步脚本导出到独立输出目录。
+5. 更新 [`CHANGELOG.md`](./CHANGELOG.md) 与 [`docs/release_note.md`](./docs/release_note.md)，提交矩阵/脚本更新并打下一个 `gdk` tag。
 
 示例命令：
 
 ```sh
-sh scripts/sync_bundle.sh --manifest manifest.json
+sh scripts/fetch_galay_repos.sh --manifest manifest.json
 sh scripts/verify_bundle.sh --manifest manifest.json
+sh scripts/sync_bundle.sh --manifest manifest.json --output /tmp/galay-sdk-bundle
 ```
 
-如需只查看计划动作而不改写源码目录，可在同步步骤使用 `--dry-run`。
+如需只查看计划动作而不改写本地工作树或导出目录，可使用 `--dry-run`。
 
 ## 一键安装所有 `galay-*` 仓库
 
-安装脚本会按 [`manifest.json`](./manifest.json) 声明，对 `galay-sdk` 内已包含的
-`galay-*` 组件逐个执行 CMake 编译安装流程：
+安装脚本会按 [`manifest.json`](./manifest.json) 声明，对 `galay-sdk/<repo>` 下已抓取的
+`galay-*` 本地工作树逐个执行 CMake 编译安装流程：
 `mkdir build` -> `cmake ..` -> `cmake --build` -> `cmake --install`。
 脚本会按依赖顺序构建（例如先 `galay-kernel`/`galay-utils`，再 `galay-http`，
 最后 `galay-etcd`），并自动注入 `CMAKE_PREFIX_PATH`。
@@ -89,17 +90,17 @@ sh scripts/install_galay_repos.sh --manifest manifest.json --dry-run
 
 ## 一键抓取所有 `galay-*` 源仓库
 
-如果你希望维护 `galay-sdk` 之外的 sibling 源仓库（不存在则 clone，已存在则
-fetch 最新 tags/refs），可使用抓取脚本：
+抓取脚本会把 `galay-*` 仓库维护在 `galay-sdk/<repo>` 下（不存在则 clone，
+已存在则 fetch 最新 tags/refs，并默认切到 manifest 指定版本）：
 
 ```sh
 sh scripts/fetch_galay_repos.sh --manifest manifest.json
 ```
 
-如需按清单版本统一切换：
+如只想刷新 refs 而不切换到 manifest 版本：
 
 ```sh
-sh scripts/fetch_galay_repos.sh --manifest manifest.json --checkout-version
+sh scripts/fetch_galay_repos.sh --manifest manifest.json --no-checkout-version
 ```
 
 预览模式：
@@ -108,9 +109,9 @@ sh scripts/fetch_galay_repos.sh --manifest manifest.json --checkout-version
 sh scripts/fetch_galay_repos.sh --manifest manifest.json --dry-run
 ```
 
-## 内容边界
+## 导出包内容边界
 
-bundle 会保留各组件源码、示例、测试、基准和构建元数据；同时会过滤以下生成内容：
+导出的 bundle 会保留各组件源码、示例、测试、基准和构建元数据；同时会过滤以下生成内容：
 
 - 嵌套 `.git` 目录
 - 编辑器缓存（如 `.cache/`、`.clangd/`）

@@ -31,9 +31,10 @@ assert_eq() {
 
 GIT_SOURCE="$TMP_ROOT/git-source"
 LOCAL_SOURCE="$TMP_ROOT/local-source"
-BUNDLE_ROOT="$TMP_ROOT/bundle"
+WORKSPACE_ROOT="$TMP_ROOT/workspace"
+OUTPUT_ROOT="$TMP_ROOT/output"
 
-mkdir -p "$GIT_SOURCE" "$LOCAL_SOURCE" "$BUNDLE_ROOT"
+mkdir -p "$GIT_SOURCE" "$LOCAL_SOURCE" "$WORKSPACE_ROOT" "$OUTPUT_ROOT"
 
 git -C "$GIT_SOURCE" init -q
 git -C "$GIT_SOURCE" config user.name "Test User"
@@ -65,11 +66,11 @@ mkdir -p "$LOCAL_SOURCE/benchmark/results/run-2"
 printf '%s\n' "folded" > "$LOCAL_SOURCE/benchmark/results/run-2/client.folded"
 printf '%s\n' "log" > "$LOCAL_SOURCE/local.log"
 
-mkdir -p "$BUNDLE_ROOT/galay-git" "$BUNDLE_ROOT/galay-local"
-printf '%s\n' "stale" > "$BUNDLE_ROOT/galay-git/stale.txt"
-printf '%s\n' "stale" > "$BUNDLE_ROOT/galay-local/stale.txt"
+mkdir -p "$WORKSPACE_ROOT/galay-git" "$WORKSPACE_ROOT/galay-local"
+printf '%s\n' "workspace" > "$WORKSPACE_ROOT/galay-git/keep.txt"
+printf '%s\n' "workspace" > "$WORKSPACE_ROOT/galay-local/keep.txt"
 
-cat > "$BUNDLE_ROOT/manifest.json" <<EOF
+cat > "$WORKSPACE_ROOT/manifest.json" <<EOF
 {
   "bundle_name": "fixture-gdk",
   "bundle_version": "v9.9.9",
@@ -98,32 +99,38 @@ cat > "$BUNDLE_ROOT/manifest.json" <<EOF
 }
 EOF
 
-sh "$REPO_ROOT/scripts/sync_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.json"
+sh "$REPO_ROOT/scripts/sync_bundle.sh" --manifest "$WORKSPACE_ROOT/manifest.json" --output "$OUTPUT_ROOT"
 
-assert_exists "$BUNDLE_ROOT/galay-git/include/sample.h"
-assert_exists "$BUNDLE_ROOT/galay-local/include/local.h"
-assert_not_exists "$BUNDLE_ROOT/galay-git/stale.txt"
-assert_not_exists "$BUNDLE_ROOT/galay-local/stale.txt"
-assert_not_exists "$BUNDLE_ROOT/galay-git/build"
-assert_not_exists "$BUNDLE_ROOT/galay-local/target"
-assert_not_exists "$BUNDLE_ROOT/galay-git/.DS_Store"
-assert_not_exists "$BUNDLE_ROOT/galay-local/.DS_Store"
-assert_not_exists "$BUNDLE_ROOT/galay-git/.cache"
-assert_not_exists "$BUNDLE_ROOT/galay-local/.cache"
-assert_not_exists "$BUNDLE_ROOT/galay-git/benchmark/results"
-assert_not_exists "$BUNDLE_ROOT/galay-local/benchmark/results"
-assert_not_exists "$BUNDLE_ROOT/galay-git/debug.log"
-assert_not_exists "$BUNDLE_ROOT/galay-local/local.log"
-assert_not_exists "$BUNDLE_ROOT/galay-git/benchmark/compare/protocols/go-server/galay-http-go-proto-server"
+assert_exists "$OUTPUT_ROOT/galay-git/include/sample.h"
+assert_exists "$OUTPUT_ROOT/galay-local/include/local.h"
+assert_not_exists "$OUTPUT_ROOT/galay-git/build"
+assert_not_exists "$OUTPUT_ROOT/galay-local/target"
+assert_not_exists "$OUTPUT_ROOT/galay-git/.DS_Store"
+assert_not_exists "$OUTPUT_ROOT/galay-local/.DS_Store"
+assert_not_exists "$OUTPUT_ROOT/galay-git/.cache"
+assert_not_exists "$OUTPUT_ROOT/galay-local/.cache"
+assert_not_exists "$OUTPUT_ROOT/galay-git/benchmark/results"
+assert_not_exists "$OUTPUT_ROOT/galay-local/benchmark/results"
+assert_not_exists "$OUTPUT_ROOT/galay-git/debug.log"
+assert_not_exists "$OUTPUT_ROOT/galay-local/local.log"
+assert_not_exists "$OUTPUT_ROOT/galay-git/benchmark/compare/protocols/go-server/galay-http-go-proto-server"
+assert_exists "$WORKSPACE_ROOT/galay-git/keep.txt"
+assert_exists "$WORKSPACE_ROOT/galay-local/keep.txt"
+assert_not_exists "$WORKSPACE_ROOT/galay-git/include/sample.h"
+assert_not_exists "$WORKSPACE_ROOT/galay-local/include/local.h"
 
 EXPECTED_COMMIT=$(git -C "$GIT_SOURCE" rev-parse "v1.0.0^{}")
-ACTUAL_COMMIT=$(jq -r '.sources[0].commit' "$BUNDLE_ROOT/manifest.json")
-CAPTURED_AT=$(jq -r '.sources[1].captured_at' "$BUNDLE_ROOT/manifest.json")
-RELEASE_DATE=$(jq -r '.release_date' "$BUNDLE_ROOT/manifest.json")
+ACTUAL_COMMIT=$(jq -r '.sources[0].commit' "$OUTPUT_ROOT/manifest.json")
+CAPTURED_AT=$(jq -r '.sources[1].captured_at' "$OUTPUT_ROOT/manifest.json")
+RELEASE_DATE=$(jq -r '.release_date' "$OUTPUT_ROOT/manifest.json")
+WORKSPACE_COMMIT=$(jq -r '.sources[0].commit' "$WORKSPACE_ROOT/manifest.json")
+WORKSPACE_RELEASE_DATE=$(jq -r '.release_date' "$WORKSPACE_ROOT/manifest.json")
 TODAY=$(date '+%Y-%m-%d')
 
 assert_eq "$EXPECTED_COMMIT" "$ACTUAL_COMMIT"
 assert_eq "$TODAY" "$RELEASE_DATE"
+[ "$WORKSPACE_COMMIT" = "null" ] || fail "expected workspace manifest commit to remain untouched"
+assert_eq "2000-01-01" "$WORKSPACE_RELEASE_DATE"
 [ "$CAPTURED_AT" != "null" ] || fail "expected local snapshot captured_at to be populated"
 
 printf '%s\n' "ok"

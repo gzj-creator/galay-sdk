@@ -2,16 +2,15 @@
 
 [中文说明](./README-CN.md)
 
-`galay-sdk` is the source distribution repository for the `galay-*`
-family.
+`galay-sdk` is the manifest-and-tooling workspace for the `galay-*` family.
 
 Its core rule is:
 
 - one `gdk` version maps to one fixed `galay-*` tag matrix
-- cloning a `gdk` tag gives you the full source bundle directly
-- the repository excludes upstream `.git` history and generated artifacts
+- cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
+- local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v0.3.0`
+Current bundle version: `v1.0.0`
 
 ## Version Matrix
 
@@ -29,12 +28,12 @@ declares:
 
 | Repository | Source type | Included version | Source ref |
 | --- | --- | --- | --- |
-| `galay-etcd` | `git-tag-archive` | `v1.1.8` | `549634bca9991c8f42741336252f5aa2772400d5` |
-| `galay-http` | `git-tag-archive` | `v2.1.2` | `f90ef97d619ec7cb9c8b4343d9d17a457442be14` |
+| `galay-etcd` | `git-tag-archive` | `v1.1.8` | `6f8d2dda295e0e3ed96b2d4cc2df4a88cb68482f` |
+| `galay-http` | `git-tag-archive` | `v2.1.2` | `67daa6c1e76cbed8189c562dbaf6379e9e2760ea` |
 | `galay-kernel` | `git-tag-archive` | `v3.4.5` | `b39b3afc089e56589a8076915b7128c2fa38591c` |
-| `galay-mcp` | `git-tag-archive` | `v1.1.3` | `e470fb1d9a6c1ebb5576009e8cf9b008ba9d6972` |
+| `galay-mcp` | `git-tag-archive` | `v1.1.3` | `a206d70dd1aeafd90b642b384cae761ad20de645` |
 | `galay-mongo` | `local-snapshot` | local snapshot | captured on `2026-04-22` |
-| `galay-mysql` | `git-tag-archive` | `v1.2.5` | `82fb561414d005420782f7aab40d0ce88297bb5d` |
+| `galay-mysql` | `git-tag-archive` | `v1.2.6` | `f43cb41503ab36f012ce7ea7cdf166344b8a1a64` |
 | `galay-redis` | `git-tag-archive` | `v1.2.2` | `082453047dba1350c51be8b4242f8c8404083f89` |
 | `galay-rpc` | `git-tag-archive` | `v1.1.3` | `51ac066edd5d2c2ae0493fcb9436d9cda4103561` |
 | `galay-ssl` | `git-tag-archive` | `v1.2.2` | `cb1d2f9a2d7729b651ce1170f7a5cd75a74be119` |
@@ -43,26 +42,26 @@ declares:
 ## Update Workflow
 
 1. Edit [`manifest.json`](./manifest.json) to select the next `galay-*` tag matrix.
-2. Run the sync script to export the declared sources into the bundle tree.
-3. Run the verification script to ensure version and content boundaries are still correct.
-4. Update [`CHANGELOG.md`](./CHANGELOG.md) and [`docs/release_note.md`](./docs/release_note.md).
-5. Commit the bundle update and add the next `gdk` tag.
+2. Run the fetch script to clone or refresh local `galay-*` worktrees under the workspace root and detach them to the manifest versions.
+3. Run the verification script to ensure the local matrix is still correct.
+4. When you need a distributable source bundle, run the sync script with a separate output directory.
+5. Update [`CHANGELOG.md`](./CHANGELOG.md) and [`docs/release_note.md`](./docs/release_note.md), then commit the matrix/tooling update and add the next `gdk` tag.
 
 Example commands:
 
 ```sh
-sh scripts/sync_bundle.sh --manifest manifest.json
+sh scripts/fetch_galay_repos.sh --manifest manifest.json
 sh scripts/verify_bundle.sh --manifest manifest.json
+sh scripts/sync_bundle.sh --manifest manifest.json --output /tmp/galay-sdk-bundle
 ```
 
-Use `--dry-run` on the sync step when you want to inspect the planned actions
-without rewriting the bundled source tree.
+Use `--dry-run` to inspect fetch or export actions without changing the local worktrees or output bundle.
 
 ## Install All `galay-*` Repositories
 
-Use the install helper to build and install all bundled `galay-*` components
-declared in [`manifest.json`](./manifest.json). The script uses the source tree
-already present in `galay-sdk` and runs a CMake workflow per component:
+Use the install helper to build and install all fetched `galay-*` components
+declared in [`manifest.json`](./manifest.json). The script uses the local
+workspace checkouts under `galay-sdk/<repo>` and runs a CMake workflow per component:
 `mkdir build` -> `cmake ..` -> `cmake --build` -> `cmake --install`.
 It builds in dependency order (for example `galay-kernel`/`galay-utils` before
 `galay-http`, then `galay-etcd`) and injects `CMAKE_PREFIX_PATH` automatically.
@@ -94,17 +93,18 @@ sh scripts/install_galay_repos.sh --manifest manifest.json --dry-run
 
 ## Fetch All `galay-*` Source Repositories
 
-Use the fetch helper when you want to maintain sibling source repositories
-outside `galay-sdk` (clone if missing, otherwise fetch tags/refs).
+Use the fetch helper to maintain local `galay-*` worktrees under
+`galay-sdk/<repo>` (clone if missing, otherwise fetch tags/refs and detach to
+the manifest version by default).
 
 ```sh
 sh scripts/fetch_galay_repos.sh --manifest manifest.json
 ```
 
-You can also checkout each repository to the version declared in the manifest:
+If you only want to refresh refs without checking out the manifest tag:
 
 ```sh
-sh scripts/fetch_galay_repos.sh --manifest manifest.json --checkout-version
+sh scripts/fetch_galay_repos.sh --manifest manifest.json --no-checkout-version
 ```
 
 Preview mode:
@@ -113,10 +113,10 @@ Preview mode:
 sh scripts/fetch_galay_repos.sh --manifest manifest.json --dry-run
 ```
 
-## Content Boundary
+## Exported Bundle Boundary
 
-The bundle keeps source files, examples, tests, benchmarks, and build metadata
-that belong to each component. It filters out generated content such as:
+The exported bundle keeps source files, examples, tests, benchmarks, and build
+metadata that belong to each component. It filters out generated content such as:
 
 - nested `.git` directories
 - editor caches such as `.cache/` and `.clangd/`

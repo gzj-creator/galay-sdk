@@ -8,6 +8,24 @@
 
 ## [Unreleased]
 
+## [v1.0.0] - 2026-04-24
+
+### Added
+- 新增 `tests/test_fetch_galay_repos.sh`，覆盖 `fetch_galay_repos.sh` 默认将组件仓库拉到 `galay-sdk/<repo>` 并自动 checkout 到 `manifest` 指定版本的行为。
+- 为工作区模型切换补充实施设计与执行计划文档，明确 `galay-sdk` 仅保留版本矩阵、脚本与发布说明。
+
+### Changed
+- 将 `galay-sdk` 从“提交完整 `galay-*` 源码 bundle 的聚合仓库”重构为“只提交清单与工具脚本的工作区仓库”，移除版本控制中的顶层 `galay-*` 源码目录。
+- 更新 `manifest.json` 的本地路径语义，统一使用工作区内的 `galay-sdk/<repo>` 目录作为本地 checkout 位置，并刷新 `galay-etcd`、`galay-http`、`galay-mcp`、`galay-mysql` 的 tag commit 记录。
+- 将 `galay-mysql` 版本矩阵从 `v1.2.5` 升级到 `v1.2.6`，保证工作区抓取结果与当前发布 tag 对齐。
+- 调整中英文 README，明确本地依赖抓取、忽略规则、导出 bundle 的新流程，以及 `fetch` / `sync` 的最新命令示例。
+
+### Fixed
+- `scripts/fetch_galay_repos.sh` 默认在工作区根目录内 clone/fetch 组件仓库，并默认 detach 到 `manifest` 指定版本；新增 `--no-checkout-version` 以支持只刷新 refs。
+- `scripts/fetch_galay_repos.sh` 在 fetch 已存在仓库时改为强制同步远端 tags，修复远端同名 tag 被重打后再次抓取会触发 `would clobber existing tag` 的问题。
+- `scripts/sync_bundle.sh` 改为必须显式传入 `--output` 导出目录，只生成独立源码包，不再清空或改写工作区内的本地 Git checkout。
+- `tests/test_sync_bundle.sh` 增强为校验导出目录与工作区隔离，确保同步 bundle 时不会覆盖本地工作树或修改工作区内的 `manifest.json`。
+
 ## [v0.3.0] - 2026-04-23
 
 ### Added

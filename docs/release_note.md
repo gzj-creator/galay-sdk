@@ -2,6 +2,17 @@
 
 按时间顺序追加版本记录，避免覆盖历史发布说明。
 
+## v1.0.0 - 2026-04-24
+
+- 版本级别：大版本（major）
+- Git 提交消息：`refactor: 将galay-sdk切换为清单工作区`
+- Git Tag：`v1.0.0`
+- 自述摘要：
+  - 将 `galay-sdk` 从直接提交完整 `galay-*` 源码快照的聚合仓库，重构为只提交版本矩阵、脚本、文档与发布记录的清单工作区，并从版本控制中移除顶层 `galay-*` 源码目录。
+  - 调整 `manifest.json`、`.gitignore` 与中英文 README，统一本地 checkout 目录为 `galay-sdk/<repo>`，刷新 `galay-etcd`、`galay-http`、`galay-mcp`、`galay-mysql` 的 tag commit 记录，并将 `galay-mysql` 升级到 `v1.2.6`。
+  - 重写 `scripts/fetch_galay_repos.sh` 的默认行为：抓取落地到工作区内、默认 checkout 到清单版本，并在 fetch 时强制同步远端 tags，修复 tag 重打后会报 `would clobber existing tag` 的问题。
+  - 重写 `scripts/sync_bundle.sh` 的输出边界：必须显式传入 `--output` 导出目录，只生成独立源码包而不再改写工作区；同时新增 `tests/test_fetch_galay_repos.sh` 并强化 `tests/test_sync_bundle.sh`，覆盖新工作流的关键回归场景。
+
 ## v0.1.0 - 2026-04-22
 
 - 版本级别：中版本（minor）
