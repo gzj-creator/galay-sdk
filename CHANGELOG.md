@@ -8,6 +8,11 @@
 
 ## [Unreleased]
 
+### Changed
+- `scripts/fetch_galay_repos.sh` 现在要求所有 `galay-*` 清单项必须提供非空 `version`，缺失时直接报错退出。
+- `scripts/fetch_galay_repos.sh` 对已存在仓库改为按指定版本执行浅拉取，对缺失仓库改为按指定版本执行浅克隆，减少不必要的历史下载。
+- 将 `manifest.json` 中 `galay-mongo` 的版本声明修正为远端实际存在的 tag `v1.1.2`，避免按错误 ref 拉取失败。
+
 ## [v1.0.0] - 2026-04-24
 
 ### Added

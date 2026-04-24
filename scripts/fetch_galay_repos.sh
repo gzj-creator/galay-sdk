@@ -73,6 +73,7 @@ while [ "$index" -lt "$repo_count" ]; do
     esac
 
     [ -n "$repo" ] || die "source '$name' is missing repo"
+    [ -n "$version" ] || die "source '$name' is missing version"
 
     target_dir=$(resolve_target_dir "$local_path" "$name")
     target_parent=$(dirname -- "$target_dir")
@@ -87,23 +88,23 @@ while [ "$index" -lt "$repo_count" ]; do
 
     if [ -d "$target_dir/.git" ]; then
         if [ "$DRY_RUN" -eq 1 ]; then
-            log "dry-run: fetch tags in $target_dir"
+            log "dry-run: fetch $name at $version in $target_dir"
         else
-            log "fetch: $name ($target_dir)"
-            git -C "$target_dir" fetch --tags --prune --force origin
+            log "fetch: $name ($target_dir) @ $version"
+            git -C "$target_dir" fetch --depth 1 origin "$version"
         fi
     elif [ -d "$target_dir" ]; then
         die "target exists but is not a git repo: $target_dir"
     else
         if [ "$DRY_RUN" -eq 1 ]; then
-            log "dry-run: clone $repo -> $target_dir"
+            log "dry-run: clone $repo@$version -> $target_dir"
         else
-            log "clone: $name -> $target_dir"
-            git clone "$repo" "$target_dir"
+            log "clone: $name@$version -> $target_dir"
+            git clone --depth 1 --branch "$version" "$repo" "$target_dir"
         fi
     fi
 
-    if [ "$CHECKOUT_VERSION" -eq 1 ] && [ -n "$version" ]; then
+    if [ "$CHECKOUT_VERSION" -eq 1 ]; then
         if [ "$DRY_RUN" -eq 1 ]; then
             log "dry-run: checkout $name to $version"
             continue

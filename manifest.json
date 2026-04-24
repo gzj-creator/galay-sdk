@@ -51,7 +51,7 @@
       "repo": "https://github.com/gzj-creator/galay-mongo.git",
       "local_path": "galay-mongo",
       "path": "galay-mongo",
-      "version": null,
+      "version": "v1.1.2",
       "commit": null,
       "captured_at": "2026-04-22"
     },
