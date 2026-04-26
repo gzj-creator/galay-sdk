@@ -2,6 +2,17 @@
 
 按时间顺序追加版本记录，避免覆盖历史发布说明。
 
+## v1.0.1 - 2026-04-26
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 发布 v1.0.1 版本矩阵更新`
+- Git Tag：`v1.0.1`
+- 自述摘要：
+  - 新增 `AGENTS.md` 与仓库级 `CLAUDE.md`，统一约束“检查”“更新”等提交流程必须先核对各仓库最新版本，并按 `commit_change` skill 处理 `VERSION`、tag 与发布文档。
+  - 收束 `v1.0.0` 之后的抓取流程改动：`scripts/fetch_galay_repos.sh` 改为强制要求非空 `version`，并对已存在仓库按指定版本浅拉取、对缺失仓库按指定版本浅克隆；同时将 `galay-mongo` 的清单版本修正为远端实际存在的 `v1.1.2`。
+  - 将 bundle 版本从 `v1.0.0` 升级到 `v1.0.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 中的版本号和发布日期。
+  - 将版本矩阵中的 `galay-http` 从 `v2.1.2` 升级到 `v2.1.3`、`galay-kernel` 从 `v3.4.5` 升级到 `v3.4.6`，对齐当前远端最新已发布 tag。
+
 ## v1.0.0 - 2026-04-24
 
 - 版本级别：大版本（major）

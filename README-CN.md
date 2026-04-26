@@ -10,7 +10,7 @@
 - 克隆某个 `gdk` tag 后可获得确定版本矩阵及本地落库脚本
 - 本地 `galay-*` 工作树位于仓库根目录下，但不纳入版本控制
 
-当前 bundle 版本：`v1.0.0`
+当前 bundle 版本：`v1.0.1`
 
 ## 版本矩阵
 
@@ -28,8 +28,8 @@
 | 仓库 | 来源类型 | 收录版本 | 来源引用 |
 | --- | --- | --- | --- |
 | `galay-etcd` | `git-tag-archive` | `v1.1.8` | `6f8d2dda295e0e3ed96b2d4cc2df4a88cb68482f` |
-| `galay-http` | `git-tag-archive` | `v2.1.2` | `67daa6c1e76cbed8189c562dbaf6379e9e2760ea` |
-| `galay-kernel` | `git-tag-archive` | `v3.4.5` | `b39b3afc089e56589a8076915b7128c2fa38591c` |
+| `galay-http` | `git-tag-archive` | `v2.1.3` | `622eea548fae3061ba893413a93193d444618613` |
+| `galay-kernel` | `git-tag-archive` | `v3.4.6` | `a408d4a0f9326b860fe6837ee83f41f08d1851bc` |
 | `galay-mcp` | `git-tag-archive` | `v1.1.3` | `a206d70dd1aeafd90b642b384cae761ad20de645` |
 | `galay-mongo` | `local-snapshot` | 本地快照 | 捕获于 `2026-04-22` |
 | `galay-mysql` | `git-tag-archive` | `v1.2.6` | `f43cb41503ab36f012ce7ea7cdf166344b8a1a64` |

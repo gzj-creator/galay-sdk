@@ -1,7 +1,7 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v1.0.0",
-  "release_date": "2026-04-24",
+  "bundle_version": "v1.0.1",
+  "release_date": "2026-04-26",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [
     {
@@ -21,8 +21,8 @@
       "repo": "https://github.com/gzj-creator/galay-http.git",
       "local_path": "galay-http",
       "path": "galay-http",
-      "version": "v2.1.2",
-      "commit": "67daa6c1e76cbed8189c562dbaf6379e9e2760ea"
+      "version": "v2.1.3",
+      "commit": "622eea548fae3061ba893413a93193d444618613"
     },
     {
       "name": "galay-kernel",
@@ -31,8 +31,8 @@
       "repo": "https://github.com/gzj-creator/galay-kernel.git",
       "local_path": "galay-kernel",
       "path": "galay-kernel",
-      "version": "v3.4.5",
-      "commit": "b39b3afc089e56589a8076915b7128c2fa38591c"
+      "version": "v3.4.6",
+      "commit": "a408d4a0f9326b860fe6837ee83f41f08d1851bc"
     },
     {
       "name": "galay-mcp",

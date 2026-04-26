@@ -10,7 +10,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
 - local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v1.0.0`
+Current bundle version: `v1.0.1`
 
 ## Version Matrix
 
@@ -29,8 +29,8 @@ declares:
 | Repository | Source type | Included version | Source ref |
 | --- | --- | --- | --- |
 | `galay-etcd` | `git-tag-archive` | `v1.1.8` | `6f8d2dda295e0e3ed96b2d4cc2df4a88cb68482f` |
-| `galay-http` | `git-tag-archive` | `v2.1.2` | `67daa6c1e76cbed8189c562dbaf6379e9e2760ea` |
-| `galay-kernel` | `git-tag-archive` | `v3.4.5` | `b39b3afc089e56589a8076915b7128c2fa38591c` |
+| `galay-http` | `git-tag-archive` | `v2.1.3` | `622eea548fae3061ba893413a93193d444618613` |
+| `galay-kernel` | `git-tag-archive` | `v3.4.6` | `a408d4a0f9326b860fe6837ee83f41f08d1851bc` |
 | `galay-mcp` | `git-tag-archive` | `v1.1.3` | `a206d70dd1aeafd90b642b384cae761ad20de645` |
 | `galay-mongo` | `local-snapshot` | local snapshot | captured on `2026-04-22` |
 | `galay-mysql` | `git-tag-archive` | `v1.2.6` | `f43cb41503ab36f012ce7ea7cdf166344b8a1a64` |

@@ -8,14 +8,21 @@
 
 ## [Unreleased]
 
-### Docs
-- 新增 `AGENTS.md`，同步仓库级 agent 执行规则，要求在“检查”“更新”等需要提交的场景下先核对各仓库最新版本并与 `VERSION` 清单比对。
-- 新增仓库级 `CLAUDE.md` 版本工作流说明，明确版本清单更新、tag 创建以及提交规则统一遵循 `commit_change` skill。
+## [v1.0.1] - 2026-04-26
+
+### Added
+- 新增 `AGENTS.md` 与仓库级 `CLAUDE.md`，统一约束“检查”“更新”等提交场景必须先核对各仓库最新版本并与 `VERSION` 清单比对，再按 `commit_change` skill 处理版本、tag 与提交。
 
 ### Changed
 - `scripts/fetch_galay_repos.sh` 现在要求所有 `galay-*` 清单项必须提供非空 `version`，缺失时直接报错退出。
 - `scripts/fetch_galay_repos.sh` 对已存在仓库改为按指定版本执行浅拉取，对缺失仓库改为按指定版本执行浅克隆，减少不必要的历史下载。
 - 将 `manifest.json` 中 `galay-mongo` 的版本声明修正为远端实际存在的 tag `v1.1.2`，避免按错误 ref 拉取失败。
+- 将 bundle 版本从 `v1.0.0` 升级到 `v1.0.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+- 将 `manifest.json` 中 `galay-http` 的版本矩阵从 `v2.1.2` 升级到 `v2.1.3`，对齐远端最新已发布 tag。
+- 将 `manifest.json` 中 `galay-kernel` 的版本矩阵从 `v3.4.5` 升级到 `v3.4.6`，对齐远端最新已发布 tag。
+
+### Docs
+- 收束此前未发版文档变更，将仓库级版本工作流说明并入 `v1.0.1` 发布记录。
 
 ## [v1.0.0] - 2026-04-24
 
