@@ -8,6 +8,10 @@
 
 ## [Unreleased]
 
+### Docs
+- 新增 `AGENTS.md`，同步仓库级 agent 执行规则，要求在“检查”“更新”等需要提交的场景下先核对各仓库最新版本并与 `VERSION` 清单比对。
+- 新增仓库级 `CLAUDE.md` 版本工作流说明，明确版本清单更新、tag 创建以及提交规则统一遵循 `commit_change` skill。
+
 ### Changed
 - `scripts/fetch_galay_repos.sh` 现在要求所有 `galay-*` 清单项必须提供非空 `version`，缺失时直接报错退出。
 - `scripts/fetch_galay_repos.sh` 对已存在仓库改为按指定版本执行浅拉取，对缺失仓库改为按指定版本执行浅克隆，减少不必要的历史下载。
