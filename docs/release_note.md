@@ -73,3 +73,13 @@
   - 安装流程新增依赖顺序和 `CMAKE_PREFIX_PATH` 注入机制，默认安装前缀改为 `./.galay-prefix/latest`，修复 `galay-etcd` 先于 `galay-http` 安装时的 `find_package` 依赖命中问题。
   - 新增 `scripts/fetch_galay_repos.sh` 用于批量 clone/fetch sibling 源仓库并可按清单版本切换，同时补齐 `README.md` 与 `README-CN.md` 双语文档入口与使用示例。
   - 收束此前未发版累计变更：同步多组件 CMake 包导出命名到小写 kebab-case、补齐 `verify_bundle.sh` 依赖下界校验，并完成 `galay-kernel`/`galay-rpc`/`galay-etcd`/`galay-utils` 版本矩阵修复。
+
+## v2.0.0 - 2026-04-29
+
+- 版本级别：大版本（major）
+- Git 提交消息：`refactor: 统一源码文件命名规范`
+- Git Tag：`v2.0.0`
+- 自述摘要：
+  - 将源码、头文件、测试、示例与 benchmark 文件统一重命名为 lower_snake_case，编号前缀同步改为小写下划线形式。
+  - 同步更新 CMake/Bazel 构建描述、模块入口、README/docs、脚本和所有项目内 include 路径引用。
+  - 移除项目内相对 include，统一使用基于公开 include 根或模块根的非相对路径。

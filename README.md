@@ -10,7 +10,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
 - local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v1.0.1`
+Current bundle version: `v2.0.0`
 
 ## Version Matrix
 
@@ -28,16 +28,16 @@ declares:
 
 | Repository | Source type | Included version | Source ref |
 | --- | --- | --- | --- |
-| `galay-etcd` | `git-tag-archive` | `v1.1.8` | `6f8d2dda295e0e3ed96b2d4cc2df4a88cb68482f` |
-| `galay-http` | `git-tag-archive` | `v2.1.3` | `622eea548fae3061ba893413a93193d444618613` |
-| `galay-kernel` | `git-tag-archive` | `v3.4.6` | `a408d4a0f9326b860fe6837ee83f41f08d1851bc` |
-| `galay-mcp` | `git-tag-archive` | `v1.1.3` | `a206d70dd1aeafd90b642b384cae761ad20de645` |
-| `galay-mongo` | `local-snapshot` | local snapshot | captured on `2026-04-22` |
-| `galay-mysql` | `git-tag-archive` | `v1.2.6` | `f43cb41503ab36f012ce7ea7cdf166344b8a1a64` |
-| `galay-redis` | `git-tag-archive` | `v1.2.2` | `082453047dba1350c51be8b4242f8c8404083f89` |
-| `galay-rpc` | `git-tag-archive` | `v1.1.3` | `51ac066edd5d2c2ae0493fcb9436d9cda4103561` |
-| `galay-ssl` | `git-tag-archive` | `v1.2.2` | `cb1d2f9a2d7729b651ce1170f7a5cd75a74be119` |
-| `galay-utils` | `git-tag-archive` | `v1.2.1` | `1ce934b6f914918e3ddcb585bb806dd07ec0fa31` |
+| `galay-etcd` | `git-tag-archive` | `v2.0.0` | `25f875c707cc5031c97d20d62f18aab3b3db3c50` |
+| `galay-http` | `git-tag-archive` | `v3.0.0` | `108849d324a4effcaf31e535b10b169511961449` |
+| `galay-kernel` | `git-tag-archive` | `v4.0.0` | `c4481276a7626a6719a62107ecfa6b2d22933d5b` |
+| `galay-mcp` | `git-tag-archive` | `v2.0.0` | `b69cfa50e7af6209e13392fe3eaec5c8e27449ae` |
+| `galay-mongo` | `local-snapshot` | local snapshot | captured on `2026-04-29` |
+| `galay-mysql` | `git-tag-archive` | `v2.0.0` | `7be78d982aa0a84db5904525763a9c10ecc4849e` |
+| `galay-redis` | `git-tag-archive` | `v2.0.0` | `43a613111b04c6145c01b0e71a57f0be0a6f350f` |
+| `galay-rpc` | `git-tag-archive` | `v2.0.0` | `b7369c2616750946fb44ab3ef711984702593286` |
+| `galay-ssl` | `git-tag-archive` | `v2.0.0` | `ead04e8f9cd1e43955d1d21b1e00bfab0c538e02` |
+| `galay-utils` | `git-tag-archive` | `v2.0.0` | `69024be82fd4b03cc50fb54fe24556f8b9aeee70` |
 
 ## Update Workflow
 
@@ -128,7 +128,7 @@ metadata that belong to each component. It filters out generated content such as
 
 ## Notes
 
-- `galay-utils` is exported from the highest released tag `v1.2.1`, aligned
+- `galay-utils` is exported from the highest released tag `v2.0.0`, aligned
   with the current source-repo package version metadata.
 - `galay-http` and `galay-kernel` are also exported from their highest released
   tags rather than from unreleased local branch state.
