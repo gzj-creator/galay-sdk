@@ -5,6 +5,16 @@
 
 ## [Unreleased]
 
+## [v2.0.2] - 2026-05-12
+
+### Changed
+- 将 `manifest.json` 中 `galay-etcd`、`galay-http`、`galay-mcp`、`galay-mysql`、`galay-redis`、`galay-rpc` 与 `galay-ssl` 升级到移除 `benchmark/compare` 目录后的最新已发布 tag。
+- 同步刷新上述仓库在版本矩阵中的 commit 记录，确保 `galay-sdk` bundle 与远端发布结果一一对应。
+- 将 bundle 版本从 `v2.0.1` 升级到 `v2.0.2`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.0.2`。
+
 ## [v2.0.1] - 2026-05-11
 
 ### Changed

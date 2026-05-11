@@ -93,3 +93,13 @@
   - 将 `manifest.json` 中 `galay-mongo` 从本地快照来源切换为 `git-tag-archive`，版本矩阵升级到已发布 tag `v3.0.0`。
   - 将 bundle 版本从 `v2.0.0` 升级到 `v2.0.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
   - 更新中英文 README 的版本矩阵和备注，明确 `galay-mongo` 已改为按发布 tag 导出。
+
+## v2.0.2 - 2026-05-12
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 发布 v2.0.2 版本矩阵更新`
+- Git Tag：`v2.0.2`
+- 自述摘要：
+  - 将 `manifest.json` 中 `galay-etcd`、`galay-http`、`galay-mcp`、`galay-mysql`、`galay-redis`、`galay-rpc` 与 `galay-ssl` 升级到移除 `benchmark/compare` 目录后的最新已发布 tag。
+  - 同步刷新上述仓库在版本矩阵中的 commit 记录，确保 `galay-sdk` bundle 与远端发布结果一一对应。
+  - 将 bundle 版本从 `v2.0.1` 升级到 `v2.0.2`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。

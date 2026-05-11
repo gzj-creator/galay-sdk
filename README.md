@@ -10,7 +10,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
 - local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v2.0.1`
+Current bundle version: `v2.0.2`
 
 ## Version Matrix
 
@@ -28,15 +28,15 @@ declares:
 
 | Repository | Source type | Included version | Source ref |
 | --- | --- | --- | --- |
-| `galay-etcd` | `git-tag-archive` | `v2.0.0` | `25f875c707cc5031c97d20d62f18aab3b3db3c50` |
-| `galay-http` | `git-tag-archive` | `v3.0.0` | `108849d324a4effcaf31e535b10b169511961449` |
+| `galay-etcd` | `git-tag-archive` | `v3.0.2` | `35e92746e0c99411476242278a2195e9aa61d0ce` |
+| `galay-http` | `git-tag-archive` | `v3.0.1` | `67a2aa4c9b946f884569259d5dc50a080322a638` |
 | `galay-kernel` | `git-tag-archive` | `v4.0.0` | `c4481276a7626a6719a62107ecfa6b2d22933d5b` |
-| `galay-mcp` | `git-tag-archive` | `v2.0.0` | `b69cfa50e7af6209e13392fe3eaec5c8e27449ae` |
+| `galay-mcp` | `git-tag-archive` | `v2.0.1` | `dba7c8af483694490f54e524df7fb001c933570f` |
 | `galay-mongo` | `git-tag-archive` | `v3.0.0` | `edae3c93a25fbb41dd1176e4f162cfd3906cb04f` |
-| `galay-mysql` | `git-tag-archive` | `v2.0.0` | `7be78d982aa0a84db5904525763a9c10ecc4849e` |
-| `galay-redis` | `git-tag-archive` | `v2.0.0` | `43a613111b04c6145c01b0e71a57f0be0a6f350f` |
-| `galay-rpc` | `git-tag-archive` | `v2.0.0` | `b7369c2616750946fb44ab3ef711984702593286` |
-| `galay-ssl` | `git-tag-archive` | `v2.0.0` | `ead04e8f9cd1e43955d1d21b1e00bfab0c538e02` |
+| `galay-mysql` | `git-tag-archive` | `v2.0.1` | `e1591197c65d5e889ae99f44c12583ca147a7b5c` |
+| `galay-redis` | `git-tag-archive` | `v2.0.1` | `1eb7d7a0bacd3cd136c2e64e7f072c21c062b2a9` |
+| `galay-rpc` | `git-tag-archive` | `v2.0.1` | `48af7fdec5791b6899ed303f1f87748edd0d90ce` |
+| `galay-ssl` | `git-tag-archive` | `v2.0.1` | `0a196411b861a5169fe68013926bd4a1361e4b27` |
 | `galay-utils` | `git-tag-archive` | `v2.0.0` | `69024be82fd4b03cc50fb54fe24556f8b9aeee70` |
 
 ## Update Workflow
