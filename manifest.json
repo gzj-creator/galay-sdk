@@ -1,7 +1,7 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v2.0.0",
-  "release_date": "2026-04-29",
+  "bundle_version": "v2.0.1",
+  "release_date": "2026-05-11",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [
     {
@@ -46,14 +46,13 @@
     },
     {
       "name": "galay-mongo",
-      "source_type": "local-snapshot",
-      "type": "local-snapshot",
+      "source_type": "git-tag-archive",
+      "type": "git-tag-archive",
       "repo": "https://github.com/gzj-creator/galay-mongo.git",
       "local_path": "galay-mongo",
       "path": "galay-mongo",
-      "version": "v2.0.0",
-      "commit": "5724b18d2d32cede80968eb1e310152ea622657e",
-      "captured_at": "2026-04-29"
+      "version": "v3.0.0",
+      "commit": "edae3c93a25fbb41dd1176e4f162cfd3906cb04f"
     },
     {
       "name": "galay-mysql",

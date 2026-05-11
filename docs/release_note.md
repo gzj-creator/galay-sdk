@@ -83,3 +83,13 @@
   - 将源码、头文件、测试、示例与 benchmark 文件统一重命名为 lower_snake_case，编号前缀同步改为小写下划线形式。
   - 同步更新 CMake/Bazel 构建描述、模块入口、README/docs、脚本和所有项目内 include 路径引用。
   - 移除项目内相对 include，统一使用基于公开 include 根或模块根的非相对路径。
+
+## v2.0.1 - 2026-05-11
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 发布 v2.0.1 版本矩阵更新`
+- Git Tag：`v2.0.1`
+- 自述摘要：
+  - 将 `manifest.json` 中 `galay-mongo` 从本地快照来源切换为 `git-tag-archive`，版本矩阵升级到已发布 tag `v3.0.0`。
+  - 将 bundle 版本从 `v2.0.0` 升级到 `v2.0.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+  - 更新中英文 README 的版本矩阵和备注，明确 `galay-mongo` 已改为按发布 tag 导出。
