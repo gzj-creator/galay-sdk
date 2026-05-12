@@ -7,6 +7,19 @@
 
 ## [Unreleased]
 
+## [v2.1.0] - 2026-05-12
+
+### Added
+- 将 `galay-mail` 以 `git-tag-archive` 形式加入版本矩阵，收录版本为 `v0.2.0`。
+- Docker 构建与验证入口新增 `galay-mail`，验证工程增加 `find_package(galay-mail 0.2.0 REQUIRED CONFIG)` 与基础头文件消费检查。
+
+### Changed
+- 将 bundle 版本从 `v2.0.3` 升级到 `v2.1.0`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号。
+- 安装脚本依赖顺序新增 `galay-mail`，确保其在 `galay-kernel` 与 `galay-ssl` 安装完成后构建。
+
+### Release
+- 按中版本发布要求提升版本到 `v2.1.0`。
+
 ## [v2.0.3] - 2026-05-12
 
 ### Changed

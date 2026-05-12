@@ -10,7 +10,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
 - local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v2.0.3`
+Current bundle version: `v2.1.0`
 
 ## Version Matrix
 
@@ -31,6 +31,7 @@ declares:
 | `galay-etcd` | `git-tag-archive` | `v3.0.2` | `35e92746e0c99411476242278a2195e9aa61d0ce` |
 | `galay-http` | `git-tag-archive` | `v3.0.1` | `67a2aa4c9b946f884569259d5dc50a080322a638` |
 | `galay-kernel` | `git-tag-archive` | `v4.0.0` | `c4481276a7626a6719a62107ecfa6b2d22933d5b` |
+| `galay-mail` | `git-tag-archive` | `v0.2.0` | `9966b3622c23d464dbc96aec119c5ae57cedc7e2` |
 | `galay-mcp` | `git-tag-archive` | `v2.0.1` | `dba7c8af483694490f54e524df7fb001c933570f` |
 | `galay-mongo` | `git-tag-archive` | `v3.0.0` | `edae3c93a25fbb41dd1176e4f162cfd3906cb04f` |
 | `galay-mysql` | `git-tag-archive` | `v2.0.1` | `e1591197c65d5e889ae99f44c12583ca147a7b5c` |
@@ -133,4 +134,6 @@ metadata that belong to each component. It filters out generated content such as
 - `galay-http` and `galay-kernel` are also exported from their highest released
   tags rather than from unreleased local branch state.
 - `galay-mongo` is exported from its released tag `v3.0.0`, aligned with the
+  current source-repo package version metadata.
+- `galay-mail` is exported from its released tag `v0.2.0`, aligned with the
   current source-repo package version metadata.

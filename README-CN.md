@@ -10,7 +10,7 @@
 - 克隆某个 `gdk` tag 后可获得确定版本矩阵及本地落库脚本
 - 本地 `galay-*` 工作树位于仓库根目录下，但不纳入版本控制
 
-当前 bundle 版本：`v2.0.3`
+当前 bundle 版本：`v2.1.0`
 
 ## 版本矩阵
 
@@ -30,6 +30,7 @@
 | `galay-etcd` | `git-tag-archive` | `v3.0.2` | `35e92746e0c99411476242278a2195e9aa61d0ce` |
 | `galay-http` | `git-tag-archive` | `v3.0.1` | `67a2aa4c9b946f884569259d5dc50a080322a638` |
 | `galay-kernel` | `git-tag-archive` | `v4.0.0` | `c4481276a7626a6719a62107ecfa6b2d22933d5b` |
+| `galay-mail` | `git-tag-archive` | `v0.2.0` | `9966b3622c23d464dbc96aec119c5ae57cedc7e2` |
 | `galay-mcp` | `git-tag-archive` | `v2.0.1` | `dba7c8af483694490f54e524df7fb001c933570f` |
 | `galay-mongo` | `git-tag-archive` | `v3.0.0` | `edae3c93a25fbb41dd1176e4f162cfd3906cb04f` |
 | `galay-mysql` | `git-tag-archive` | `v2.0.1` | `e1591197c65d5e889ae99f44c12583ca147a7b5c` |
@@ -126,3 +127,4 @@ sh scripts/fetch_galay_repos.sh --manifest manifest.json --dry-run
 - `galay-utils` 当前使用其最新已发布 tag `v2.1.0` 导出，并与源仓库版本元数据保持一致。
 - `galay-http` 和 `galay-kernel` 也使用最新已发布 tag 导出，而非未发布分支状态。
 - `galay-mongo` 当前使用其已发布 tag `v3.0.0` 导出，并与源仓库版本元数据保持一致。
+- `galay-mail` 当前使用其已发布 tag `v0.2.0` 导出，并与源仓库版本元数据保持一致。

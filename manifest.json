@@ -1,6 +1,6 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v2.0.3",
+  "bundle_version": "v2.1.0",
   "release_date": "2026-05-12",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [
@@ -33,6 +33,16 @@
       "path": "galay-kernel",
       "version": "v4.0.0",
       "commit": "c4481276a7626a6719a62107ecfa6b2d22933d5b"
+    },
+    {
+      "name": "galay-mail",
+      "source_type": "git-tag-archive",
+      "type": "git-tag-archive",
+      "repo": "https://github.com/gzj-creator/galay-mail.git",
+      "local_path": "galay-mail",
+      "path": "galay-mail",
+      "version": "v0.2.0",
+      "commit": "9966b3622c23d464dbc96aec119c5ae57cedc7e2"
     },
     {
       "name": "galay-mcp",

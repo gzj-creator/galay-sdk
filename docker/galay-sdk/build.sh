@@ -10,6 +10,7 @@ readonly REPOS=(
     galay-rpc
     galay-mcp
     galay-redis
+    galay-mail
     galay-mysql
     galay-mongo
     galay-etcd

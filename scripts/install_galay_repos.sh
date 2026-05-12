@@ -131,7 +131,7 @@ build_source() {
 BUILT_LIST=""
 
 # Build dependency roots first to avoid find_package version mismatches.
-for name in galay-kernel galay-utils galay-ssl galay-http galay-rpc galay-mysql galay-mongo galay-redis galay-mcp galay-etcd; do
+for name in galay-kernel galay-utils galay-ssl galay-http galay-rpc galay-mysql galay-mongo galay-redis galay-mail galay-mcp galay-etcd; do
     build_source "$name"
 done
 

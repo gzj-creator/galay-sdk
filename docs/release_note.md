@@ -113,3 +113,13 @@
   - 将 `manifest.json` 中 `galay-utils` 从 `v2.0.0` 升级到远端最新已发布 tag `v2.1.0`。
   - 同步刷新 `galay-utils` 在版本矩阵中的 commit 记录，确保 `galay-sdk` bundle 与远端发布结果对齐。
   - 将 bundle 版本从 `v2.0.2` 升级到 `v2.0.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号。
+
+## v2.1.0 - 2026-05-12
+
+- 版本级别：中版本（minor）
+- Git 提交消息：`feat: 收录 galay-mail 版本矩阵`
+- Git Tag：`v2.1.0`
+- 自述摘要：
+  - 将 `galay-mail` 以 `git-tag-archive` 形式加入版本矩阵，收录远端发布 tag `v0.2.0` 与提交 `9966b3622c23d464dbc96aec119c5ae57cedc7e2`。
+  - 同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md`，将 bundle 版本提升到 `v2.1.0` 并展示新增组件。
+  - 安装脚本、Docker 构建脚本和 Docker 验证工程新增 `galay-mail`，覆盖包发现、链接目标和基础头文件消费。

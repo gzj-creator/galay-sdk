@@ -13,6 +13,7 @@ find_package(galay-http 3.0.0 REQUIRED CONFIG)
 find_package(galay-rpc 2.0.0 REQUIRED CONFIG)
 find_package(galay-mcp 2.0.0 REQUIRED CONFIG)
 find_package(galay-redis 2.0.0 REQUIRED CONFIG)
+find_package(galay-mail 0.2.0 REQUIRED CONFIG)
 find_package(galay-mysql REQUIRED CONFIG)
 find_package(galay-mongo REQUIRED CONFIG)
 find_package(galay-etcd REQUIRED CONFIG)
@@ -27,6 +28,7 @@ target_link_libraries(galay-sdk-verify PRIVATE
     galay-rpc::galay-rpc
     galay-mcp
     galay-redis::galay-redis
+    galay-mail::galay-mail
     galay-mysql::galay-mysql
     galay-mongo::galay-mongo
     galay-etcd::galay-etcd
