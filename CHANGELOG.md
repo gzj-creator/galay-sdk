@@ -1,9 +1,21 @@
 # CHANGELOG
 
 维护说明：
-- 未打 tag 的改动先写入 `
+- 未打 tag 的改动先写入 `## [Unreleased]`。
+- 发布时将累计变更整理到 `## [vX.Y.Z] - YYYY-MM-DD`，并按 Added / Changed / Fixed / Docs / Chore / Release 等小节归类。
+- 版本号遵循语义化版本：大改动升主版本，新功能升次版本，修复和维护升修订版本。
 
 ## [Unreleased]
+
+## [v2.0.3] - 2026-05-12
+
+### Changed
+- 将 `manifest.json` 中 `galay-utils` 从 `v2.0.0` 升级到远端最新已发布 tag `v2.1.0`。
+- 同步刷新 `galay-utils` 在版本矩阵中的 commit 记录，确保 `galay-sdk` bundle 与远端发布结果对齐。
+- 将 bundle 版本从 `v2.0.2` 升级到 `v2.0.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.0.3`。
 
 ## [v2.0.2] - 2026-05-12
 

@@ -10,7 +10,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
 - local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v2.0.2`
+Current bundle version: `v2.0.3`
 
 ## Version Matrix
 
@@ -37,7 +37,7 @@ declares:
 | `galay-redis` | `git-tag-archive` | `v2.0.1` | `1eb7d7a0bacd3cd136c2e64e7f072c21c062b2a9` |
 | `galay-rpc` | `git-tag-archive` | `v2.0.1` | `48af7fdec5791b6899ed303f1f87748edd0d90ce` |
 | `galay-ssl` | `git-tag-archive` | `v2.0.1` | `0a196411b861a5169fe68013926bd4a1361e4b27` |
-| `galay-utils` | `git-tag-archive` | `v2.0.0` | `69024be82fd4b03cc50fb54fe24556f8b9aeee70` |
+| `galay-utils` | `git-tag-archive` | `v2.1.0` | `38ee7aac1e2ab62cdca1b2a58830a1927fc83cd7` |
 
 ## Update Workflow
 
@@ -128,7 +128,7 @@ metadata that belong to each component. It filters out generated content such as
 
 ## Notes
 
-- `galay-utils` is exported from the highest released tag `v2.0.0`, aligned
+- `galay-utils` is exported from the highest released tag `v2.1.0`, aligned
   with the current source-repo package version metadata.
 - `galay-http` and `galay-kernel` are also exported from their highest released
   tags rather than from unreleased local branch state.
