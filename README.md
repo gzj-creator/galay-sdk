@@ -102,6 +102,17 @@ the manifest version by default).
 sh scripts/fetch_galay_repos.sh --manifest manifest.json
 ```
 
+Use SSH remotes instead of the manifest HTTPS URLs:
+
+```sh
+sh scripts/fetch_galay_repos.sh --manifest manifest.json --repo-protocol ssh
+```
+
+SSH mode maps repository URLs such as
+`https://github.com/gzj-creator/galay-http.git` to
+`git@github.com:gzj-creator/galay-http.git` and updates `origin` for existing
+local worktrees before fetching.
+
 If you only want to refresh refs without checking out the manifest tag:
 
 ```sh

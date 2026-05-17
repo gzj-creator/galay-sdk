@@ -98,6 +98,16 @@ sh scripts/install_galay_repos.sh --manifest manifest.json --dry-run
 sh scripts/fetch_galay_repos.sh --manifest manifest.json
 ```
 
+如需通过 SSH 远端拉取，而不是使用 `manifest` 中的 HTTPS URL：
+
+```sh
+sh scripts/fetch_galay_repos.sh --manifest manifest.json --repo-protocol ssh
+```
+
+SSH 模式会把 `https://github.com/gzj-creator/galay-http.git` 这类仓库地址映射为
+`git@github.com:gzj-creator/galay-http.git`，并在抓取已有本地工作树前同步更新
+`origin`。
+
 如只想刷新 refs 而不切换到 manifest 版本：
 
 ```sh

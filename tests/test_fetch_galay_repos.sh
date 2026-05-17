@@ -80,4 +80,86 @@ ACTUAL_TAG=$(git -C "$BUNDLE_ROOT/galay-sample" describe --tags --exact-match HE
 assert_eq "$TAG_COMMIT" "$ACTUAL_COMMIT"
 assert_eq "v1.0.0" "$ACTUAL_TAG"
 
+cat > "$BUNDLE_ROOT/manifest-ssh.json" <<EOF
+{
+  "bundle_name": "fixture-gdk",
+  "bundle_version": "v9.9.9",
+  "release_date": "2000-01-01",
+  "sources": [
+    {
+      "name": "galay-sample",
+      "source_type": "git-tag-archive",
+      "repo": "https://github.com/gzj-creator/galay-sample.git",
+      "local_path": "galay-sample",
+      "path": "galay-sample",
+      "version": "v1.0.0",
+      "commit": null
+    }
+  ]
+}
+EOF
+
+set +e
+SSH_DRY_RUN_OUTPUT=$(sh "$REPO_ROOT/scripts/fetch_galay_repos.sh" \
+    --manifest "$BUNDLE_ROOT/manifest-ssh.json" \
+    --repo-protocol ssh \
+    --dry-run 2>&1)
+SSH_DRY_RUN_STATUS=$?
+set -e
+
+[ "$SSH_DRY_RUN_STATUS" -eq 0 ] || fail "expected SSH fetch dry-run to succeed: $SSH_DRY_RUN_OUTPUT"
+
+case "$SSH_DRY_RUN_OUTPUT" in
+    *"dry-run: set origin of galay-sample to git@github.com:gzj-creator/galay-sample.git"*)
+        ;;
+    *)
+        fail "expected dry-run output to mention SSH origin update"
+        ;;
+esac
+
+case "$SSH_DRY_RUN_OUTPUT" in
+    *"dry-run: fetch galay-sample at v1.0.0 in "*"galay-sample from git@github.com:gzj-creator/galay-sample.git"*)
+        ;;
+    *)
+        fail "expected dry-run output to mention SSH fetch URL: $SSH_DRY_RUN_OUTPUT"
+        ;;
+esac
+
+cat > "$BUNDLE_ROOT/manifest-ssh-missing.json" <<EOF
+{
+  "bundle_name": "fixture-gdk",
+  "bundle_version": "v9.9.9",
+  "release_date": "2000-01-01",
+  "sources": [
+    {
+      "name": "galay-sample",
+      "source_type": "git-tag-archive",
+      "repo": "https://github.com/gzj-creator/galay-sample.git",
+      "local_path": "galay-sample-ssh",
+      "path": "galay-sample",
+      "version": "v1.0.0",
+      "commit": null
+    }
+  ]
+}
+EOF
+
+set +e
+SSH_CLONE_DRY_RUN_OUTPUT=$(sh "$REPO_ROOT/scripts/fetch_galay_repos.sh" \
+    --manifest "$BUNDLE_ROOT/manifest-ssh-missing.json" \
+    --repo-protocol ssh \
+    --dry-run 2>&1)
+SSH_CLONE_DRY_RUN_STATUS=$?
+set -e
+
+[ "$SSH_CLONE_DRY_RUN_STATUS" -eq 0 ] || fail "expected SSH clone dry-run to succeed: $SSH_CLONE_DRY_RUN_OUTPUT"
+
+case "$SSH_CLONE_DRY_RUN_OUTPUT" in
+    *"dry-run: clone git@github.com:gzj-creator/galay-sample.git@v1.0.0 -> "*"galay-sample-ssh"*)
+        ;;
+    *)
+        fail "expected dry-run output to mention SSH clone URL: $SSH_CLONE_DRY_RUN_OUTPUT"
+        ;;
+esac
+
 printf '%s\n' "ok"
