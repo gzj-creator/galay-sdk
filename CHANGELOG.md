@@ -7,6 +7,16 @@
 
 ## [Unreleased]
 
+## [v2.1.1] - 2026-05-17
+
+### Changed
+- 将 `manifest.json` 中 `galay-redis` 从 `v2.0.1` 升级到远端最新已发布 tag `v2.0.2`。
+- 同步刷新 `galay-redis` 在版本矩阵中的 commit 记录，确保 `galay-sdk` bundle 与本次 Redis 发布结果对齐。
+- 将 bundle 版本从 `v2.1.0` 升级到 `v2.1.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.1.1`。
+
 ## [v2.1.0] - 2026-05-12
 
 ### Added

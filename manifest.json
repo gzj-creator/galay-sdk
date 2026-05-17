@@ -1,7 +1,7 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v2.1.0",
-  "release_date": "2026-05-12",
+  "bundle_version": "v2.1.1",
+  "release_date": "2026-05-17",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [
     {
@@ -81,8 +81,8 @@
       "repo": "https://github.com/gzj-creator/galay-redis.git",
       "local_path": "galay-redis",
       "path": "galay-redis",
-      "version": "v2.0.1",
-      "commit": "1eb7d7a0bacd3cd136c2e64e7f072c21c062b2a9"
+      "version": "v2.0.2",
+      "commit": "414314a33d22678dedc7557c0e670c4db1341da7"
     },
     {
       "name": "galay-rpc",

@@ -123,3 +123,13 @@
   - 将 `galay-mail` 以 `git-tag-archive` 形式加入版本矩阵，收录远端发布 tag `v0.2.0` 与提交 `9966b3622c23d464dbc96aec119c5ae57cedc7e2`。
   - 同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md`，将 bundle 版本提升到 `v2.1.0` 并展示新增组件。
   - 安装脚本、Docker 构建脚本和 Docker 验证工程新增 `galay-mail`，覆盖包发现、链接目标和基础头文件消费。
+
+## v2.1.1 - 2026-05-17
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 发布 v2.1.1 版本矩阵更新`
+- Git Tag：`v2.1.1`
+- 自述摘要：
+  - 将 `manifest.json` 中 `galay-redis` 从 `v2.0.1` 升级到远端最新已发布 tag `v2.0.2`。
+  - 同步刷新 `galay-redis` 在版本矩阵中的 commit 记录，确保 `galay-sdk` bundle 与本次 Redis 发布结果对齐。
+  - 将 bundle 版本从 `v2.1.0` 升级到 `v2.1.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
