@@ -133,3 +133,13 @@
   - 将 `manifest.json` 中 `galay-redis` 从 `v2.0.1` 升级到远端最新已发布 tag `v2.0.2`。
   - 同步刷新 `galay-redis` 在版本矩阵中的 commit 记录，确保 `galay-sdk` bundle 与本次 Redis 发布结果对齐。
   - 将 bundle 版本从 `v2.1.0` 升级到 `v2.1.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+## v2.1.2 - 2026-05-17
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`fix: 修复 bundle 导出回验链路`
+- Git Tag：`v2.1.2`
+- 自述摘要：
+  - `scripts/sync_bundle.sh` 导出 bundle 时现在会同步复制根级 `VERSION`、`README.md`、`README-CN.md`、`CHANGELOG.md` 与 `docs/release_note.md`，并移除导出 manifest 中只适用于本地 workspace 的 `local_path`。
+  - `scripts/verify_bundle.sh` 不再把 `git-tag-archive` 源的发布 tag 强行与源码 `project VERSION` 等同，避免对采用独立发布号的上游仓库误报失败。
+  - 为导出后可直接执行 `verify_bundle.sh` 的链路补充回归测试，并将 bundle 版本从 `v2.1.1` 升级到 `v2.1.2`。

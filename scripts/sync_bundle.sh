@@ -94,7 +94,6 @@ update_git_source_manifest() {
         --argjson idx "$index" \
         --arg source_type "$source_type" \
         --arg repo "$repo" \
-        --arg local_path "$local_path" \
         --arg path "$path" \
         --arg version "$version" \
         --arg commit "$commit" \
@@ -102,7 +101,7 @@ update_git_source_manifest() {
         .sources[$idx].source_type = $source_type |
         .sources[$idx].type = $source_type |
         .sources[$idx].repo = $repo |
-        (if $local_path == "" then del(.sources[$idx].local_path) else .sources[$idx].local_path = $local_path end) |
+        del(.sources[$idx].local_path) |
         .sources[$idx].path = $path |
         .sources[$idx].version = $version |
         .sources[$idx].commit = $commit |
@@ -125,14 +124,13 @@ update_local_source_manifest() {
         --argjson idx "$index" \
         --arg source_type "$source_type" \
         --arg repo "$repo" \
-        --arg local_path "$local_path" \
         --arg path "$path" \
         --arg captured_at "$captured_at" \
         '
         .sources[$idx].source_type = $source_type |
         .sources[$idx].type = $source_type |
         .sources[$idx].repo = $repo |
-        (if $local_path == "" then del(.sources[$idx].local_path) else .sources[$idx].local_path = $local_path end) |
+        del(.sources[$idx].local_path) |
         .sources[$idx].path = $path |
         .sources[$idx].commit = null |
         .sources[$idx].captured_at = $captured_at
@@ -269,6 +267,17 @@ done
 if [ "$DRY_RUN" -eq 0 ]; then
     update_release_date
     cp "$WORKING_MANIFEST" "$OUTPUT_ROOT/manifest.json"
+    for root_file in VERSION README.md README-CN.md CHANGELOG.md; do
+        if [ -f "$SOURCE_ROOT/$root_file" ]; then
+            cp "$SOURCE_ROOT/$root_file" "$OUTPUT_ROOT/$root_file"
+        fi
+    done
+    if [ -d "$SOURCE_ROOT/docs" ]; then
+        mkdir -p "$OUTPUT_ROOT/docs"
+        if [ -f "$SOURCE_ROOT/docs/release_note.md" ]; then
+            cp "$SOURCE_ROOT/docs/release_note.md" "$OUTPUT_ROOT/docs/release_note.md"
+        fi
+    fi
 fi
 
 log "done: galay sources were exported from $MANIFEST_ABS to $OUTPUT_ROOT"

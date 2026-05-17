@@ -69,6 +69,12 @@ printf '%s\n' "log" > "$LOCAL_SOURCE/local.log"
 mkdir -p "$WORKSPACE_ROOT/galay-git" "$WORKSPACE_ROOT/galay-local"
 printf '%s\n' "workspace" > "$WORKSPACE_ROOT/galay-git/keep.txt"
 printf '%s\n' "workspace" > "$WORKSPACE_ROOT/galay-local/keep.txt"
+printf '%s\n' "v9.9.9" > "$WORKSPACE_ROOT/VERSION"
+cat > "$WORKSPACE_ROOT/README.md" <<'EOF'
+# fixture
+
+Bundle version: `v9.9.9`
+EOF
 
 cat > "$WORKSPACE_ROOT/manifest.json" <<EOF
 {
@@ -123,14 +129,20 @@ EXPECTED_COMMIT=$(git -C "$GIT_SOURCE" rev-parse "v1.0.0^{}")
 ACTUAL_COMMIT=$(jq -r '.sources[0].commit' "$OUTPUT_ROOT/manifest.json")
 CAPTURED_AT=$(jq -r '.sources[1].captured_at' "$OUTPUT_ROOT/manifest.json")
 RELEASE_DATE=$(jq -r '.release_date' "$OUTPUT_ROOT/manifest.json")
+EXPORTED_LOCAL_PATH=$(jq -r '.sources[0].local_path // empty' "$OUTPUT_ROOT/manifest.json")
 WORKSPACE_COMMIT=$(jq -r '.sources[0].commit' "$WORKSPACE_ROOT/manifest.json")
 WORKSPACE_RELEASE_DATE=$(jq -r '.release_date' "$WORKSPACE_ROOT/manifest.json")
 TODAY=$(date '+%Y-%m-%d')
 
 assert_eq "$EXPECTED_COMMIT" "$ACTUAL_COMMIT"
 assert_eq "$TODAY" "$RELEASE_DATE"
+[ -z "$EXPORTED_LOCAL_PATH" ] || fail "expected exported manifest local_path to be removed"
 [ "$WORKSPACE_COMMIT" = "null" ] || fail "expected workspace manifest commit to remain untouched"
 assert_eq "2000-01-01" "$WORKSPACE_RELEASE_DATE"
 [ "$CAPTURED_AT" != "null" ] || fail "expected local snapshot captured_at to be populated"
+assert_exists "$OUTPUT_ROOT/VERSION"
+assert_exists "$OUTPUT_ROOT/README.md"
+
+sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$OUTPUT_ROOT/manifest.json"
 
 printf '%s\n' "ok"

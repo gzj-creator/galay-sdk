@@ -1,6 +1,6 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v2.1.1",
+  "bundle_version": "v2.1.2",
   "release_date": "2026-05-17",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [

@@ -7,6 +7,21 @@
 
 ## [Unreleased]
 
+## [v2.1.2] - 2026-05-17
+
+### Fixed
+- `scripts/sync_bundle.sh` 导出 bundle 时现在会同步复制根级 `VERSION`、`README.md`、`README-CN.md`、`CHANGELOG.md` 与 `docs/release_note.md`，并移除导出 manifest 中只适用于本地 workspace 的 `local_path`。
+- `scripts/verify_bundle.sh` 不再把 `git-tag-archive` 源的发布 tag 强行与源码 `project VERSION` 等同，避免对上游采用独立发布号的仓库误报失败。
+
+### Added
+- 为导出后可直接执行 `verify_bundle.sh` 的链路补充回归测试，覆盖根级元数据导出、`local_path` 清理和 `git-tag-archive` 版本校验口径。
+
+### Changed
+- 将 bundle 版本从 `v2.1.1` 升级到 `v2.1.2`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.1.2`。
+
 ## [v2.1.1] - 2026-05-17
 
 ### Changed

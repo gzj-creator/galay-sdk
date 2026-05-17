@@ -154,6 +154,42 @@ if sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.js
     fail "expected galay-utils project version drift to fail verification"
 fi
 
+GIT_TAG_ROOT="$TMP_ROOT/git-tag-source"
+mkdir -p "$GIT_TAG_ROOT"
+git -C "$GIT_TAG_ROOT" init -q
+git -C "$GIT_TAG_ROOT" config user.name "Test User"
+git -C "$GIT_TAG_ROOT" config user.email "test@example.com"
+cat > "$GIT_TAG_ROOT/CMakeLists.txt" <<'EOF'
+cmake_minimum_required(VERSION 3.16)
+project(git-tag-fixture VERSION 1.0.0 LANGUAGES CXX)
+EOF
+git -C "$GIT_TAG_ROOT" add CMakeLists.txt
+git -C "$GIT_TAG_ROOT" commit -q -m "seed"
+git -C "$GIT_TAG_ROOT" tag v9.9.9
+GIT_TAG_COMMIT=$(git -C "$GIT_TAG_ROOT" rev-parse "v9.9.9^{}")
+
+GIT_TAG_BUNDLE="$BUNDLE_ROOT/git-tag-fixture"
+mkdir -p "$GIT_TAG_BUNDLE"
+cp "$GIT_TAG_ROOT/CMakeLists.txt" "$GIT_TAG_BUNDLE/CMakeLists.txt"
+cat > "$BUNDLE_ROOT/manifest.json" <<EOF
+{
+  "bundle_name": "fixture-gdk",
+  "bundle_version": "v1.2.3",
+  "release_date": "2026-04-22",
+  "sources": [
+    {
+      "name": "git-tag-fixture",
+      "source_type": "git-tag-archive",
+      "repo": "$GIT_TAG_ROOT",
+      "path": "git-tag-fixture",
+      "version": "v9.9.9",
+      "commit": "$GIT_TAG_COMMIT"
+    }
+  ]
+}
+EOF
+sh "$REPO_ROOT/scripts/verify_bundle.sh" --manifest "$BUNDLE_ROOT/manifest.json"
+
 ETCD_ROOT="$BUNDLE_ROOT/galay-etcd"
 mkdir -p "$ETCD_ROOT"
 cat > "$ETCD_ROOT/CMakeLists.txt" <<'EOF'

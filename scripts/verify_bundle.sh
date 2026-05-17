@@ -178,7 +178,7 @@ while [ "$index" -lt "$source_count" ]; do
         [ "$expected_commit" = "$commit" ] || die "commit mismatch for '$name': manifest=$commit expected=$expected_commit"
     fi
 
-    if [ -n "$version" ]; then
+    if [ "$source_type" != "git-tag-archive" ] && [ -n "$version" ]; then
         project_version=$(scan_project_version "$source_root")
         if [ -n "$project_version" ]; then
             manifest_version=$(normalize_semver "$version")
