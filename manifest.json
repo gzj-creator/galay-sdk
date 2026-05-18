@@ -1,7 +1,7 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v2.1.2",
-  "release_date": "2026-05-17",
+  "bundle_version": "v2.1.3",
+  "release_date": "2026-05-18",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [
     {
@@ -11,8 +11,8 @@
       "repo": "https://github.com/gzj-creator/galay-etcd.git",
       "local_path": "galay-etcd",
       "path": "galay-etcd",
-      "version": "v3.0.2",
-      "commit": "35e92746e0c99411476242278a2195e9aa61d0ce"
+      "version": "v3.0.3",
+      "commit": "c79fcdc4d7a56cb6263377c71eca5b7afc6c8145"
     },
     {
       "name": "galay-http",
@@ -21,8 +21,8 @@
       "repo": "https://github.com/gzj-creator/galay-http.git",
       "local_path": "galay-http",
       "path": "galay-http",
-      "version": "v3.0.1",
-      "commit": "67a2aa4c9b946f884569259d5dc50a080322a638"
+      "version": "v3.0.2",
+      "commit": "3817cda13def4be644a2034216cd1dedf521f84b"
     },
     {
       "name": "galay-kernel",
@@ -31,8 +31,8 @@
       "repo": "https://github.com/gzj-creator/galay-kernel.git",
       "local_path": "galay-kernel",
       "path": "galay-kernel",
-      "version": "v4.0.0",
-      "commit": "c4481276a7626a6719a62107ecfa6b2d22933d5b"
+      "version": "v4.0.1",
+      "commit": "97b7ef4a9963502ecba895f6671a3ef080996b22"
     },
     {
       "name": "galay-mail",
@@ -41,8 +41,8 @@
       "repo": "https://github.com/gzj-creator/galay-mail.git",
       "local_path": "galay-mail",
       "path": "galay-mail",
-      "version": "v0.2.0",
-      "commit": "9966b3622c23d464dbc96aec119c5ae57cedc7e2"
+      "version": "v0.2.1",
+      "commit": "3bf199d769f44f946774f6cb12ab83a7e68e07a1"
     },
     {
       "name": "galay-mcp",
@@ -51,8 +51,8 @@
       "repo": "https://github.com/gzj-creator/galay-mcp.git",
       "local_path": "galay-mcp",
       "path": "galay-mcp",
-      "version": "v2.0.1",
-      "commit": "dba7c8af483694490f54e524df7fb001c933570f"
+      "version": "v2.0.2",
+      "commit": "c6bcb91c7155ed42a95299eab6747a0e9caf568d"
     },
     {
       "name": "galay-mongo",
@@ -61,8 +61,8 @@
       "repo": "https://github.com/gzj-creator/galay-mongo.git",
       "local_path": "galay-mongo",
       "path": "galay-mongo",
-      "version": "v3.0.0",
-      "commit": "edae3c93a25fbb41dd1176e4f162cfd3906cb04f"
+      "version": "v3.0.1",
+      "commit": "e801e663336d1001f2b98313d1552438d8dbffaa"
     },
     {
       "name": "galay-mysql",
@@ -71,8 +71,8 @@
       "repo": "https://github.com/gzj-creator/galay-mysql.git",
       "local_path": "galay-mysql",
       "path": "galay-mysql",
-      "version": "v2.0.1",
-      "commit": "e1591197c65d5e889ae99f44c12583ca147a7b5c"
+      "version": "v2.0.2",
+      "commit": "b173d1bb320c1c1a0d3181b580d83d2a0d6e7756"
     },
     {
       "name": "galay-redis",
@@ -81,8 +81,8 @@
       "repo": "https://github.com/gzj-creator/galay-redis.git",
       "local_path": "galay-redis",
       "path": "galay-redis",
-      "version": "v2.0.2",
-      "commit": "414314a33d22678dedc7557c0e670c4db1341da7"
+      "version": "v2.0.3",
+      "commit": "de88fbb7e091a514008d0dd8c33c50be347045af"
     },
     {
       "name": "galay-rpc",
@@ -91,8 +91,8 @@
       "repo": "https://github.com/gzj-creator/galay-rpc.git",
       "local_path": "galay-rpc",
       "path": "galay-rpc",
-      "version": "v2.0.1",
-      "commit": "48af7fdec5791b6899ed303f1f87748edd0d90ce"
+      "version": "v2.0.2",
+      "commit": "a8982611bd2708378c1c915091db315550cd833d"
     },
     {
       "name": "galay-ssl",
@@ -101,8 +101,8 @@
       "repo": "https://github.com/gzj-creator/galay-ssl.git",
       "local_path": "galay-ssl",
       "path": "galay-ssl",
-      "version": "v2.0.1",
-      "commit": "0a196411b861a5169fe68013926bd4a1361e4b27"
+      "version": "v2.0.2",
+      "commit": "0fd1f4849905bf5723f4da5f590ea30c45d17472"
     },
     {
       "name": "galay-utils",
@@ -111,8 +111,8 @@
       "repo": "https://github.com/gzj-creator/galay-utils.git",
       "local_path": "galay-utils",
       "path": "galay-utils",
-      "version": "v2.1.0",
-      "commit": "38ee7aac1e2ab62cdca1b2a58830a1927fc83cd7"
+      "version": "v2.1.1",
+      "commit": "d3fbf04c733a1026cd036ffbc68b198ac33ea1ba"
     }
   ]
 }

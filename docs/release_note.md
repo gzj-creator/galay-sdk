@@ -143,3 +143,14 @@
   - `scripts/sync_bundle.sh` 导出 bundle 时现在会同步复制根级 `VERSION`、`README.md`、`README-CN.md`、`CHANGELOG.md` 与 `docs/release_note.md`，并移除导出 manifest 中只适用于本地 workspace 的 `local_path`。
   - `scripts/verify_bundle.sh` 不再把 `git-tag-archive` 源的发布 tag 强行与源码 `project VERSION` 等同，避免对采用独立发布号的上游仓库误报失败。
   - 为导出后可直接执行 `verify_bundle.sh` 的链路补充回归测试，并将 bundle 版本从 `v2.1.1` 升级到 `v2.1.2`。
+
+## v2.1.3 - 2026-05-18
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 发布 v2.1.3 版本矩阵更新`
+- Git Tag：`v2.1.3`
+- 自述摘要：
+  - 将 `galay-etcd`、`galay-http`、`galay-kernel`、`galay-mail`、`galay-mcp`、`galay-mongo`、`galay-mysql`、`galay-redis`、`galay-rpc`、`galay-ssl` 与 `galay-utils` 全部更新到本次已发布 tag，并同步刷新版本矩阵中的精确 commit。
+  - 收录组件 CMake 包导出调整：`galay-redis` 只保留 spdlog 头文件依赖，不再导出 `spdlog::spdlog` 链接依赖；所有组件 targets 导出文件统一改为 `*ConfigTargets.cmake` / `*ConfigTargets-release.cmake` 驼峰命名。
+  - 收录 `galay-kernel v4.0.1` 对 `TaskResultStorageTraits` 结果存储释放路径的修复，消除 GCC `-Wfree-nonheap-object` 警告。
+  - 将 bundle 版本从 `v2.1.2` 升级到 `v2.1.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。

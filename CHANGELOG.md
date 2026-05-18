@@ -7,6 +7,20 @@
 
 ## [Unreleased]
 
+## [v2.1.3] - 2026-05-18
+
+### Changed
+- 将版本矩阵升级到本次组件发布结果：`galay-etcd v3.0.3`、`galay-http v3.0.2`、`galay-kernel v4.0.1`、`galay-mail v0.2.1`、`galay-mcp v2.0.2`、`galay-mongo v3.0.1`、`galay-mysql v2.0.2`、`galay-redis v2.0.3`、`galay-rpc v2.0.2`、`galay-ssl v2.0.2` 与 `galay-utils v2.1.1`。
+- 同步刷新各组件在 `manifest.json` 与中英文 README 版本矩阵中的精确 commit，确保 `galay-sdk` bundle 与远端发布 tag 对齐。
+- 收录组件 CMake 包导出调整：`galay-redis` 不再链接 `spdlog::spdlog`，改为仅使用 spdlog 头文件；所有组件安装导出的 targets 文件统一改为 `*ConfigTargets.cmake` / `*ConfigTargets-release.cmake` 驼峰命名。
+- 将 bundle 版本从 `v2.1.2` 升级到 `v2.1.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+### Fixed
+- 收录 `galay-kernel v4.0.1`，修复 `TaskResultStorageTraits<std::string>` 在 GCC 优化内联路径下触发的 `-Wfree-nonheap-object` 警告。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.1.3`。
+
 ## [v2.1.2] - 2026-05-17
 
 ### Fixed
