@@ -154,3 +154,15 @@
   - 收录组件 CMake 包导出调整：`galay-redis` 只保留 spdlog 头文件依赖，不再导出 `spdlog::spdlog` 链接依赖；所有组件 targets 导出文件统一改为 `*ConfigTargets.cmake` / `*ConfigTargets-release.cmake` 驼峰命名。
   - 收录 `galay-kernel v4.0.1` 对 `TaskResultStorageTraits` 结果存储释放路径的修复，消除 GCC `-Wfree-nonheap-object` 警告。
   - 将 bundle 版本从 `v2.1.2` 升级到 `v2.1.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+## v2.2.0 - 2026-05-20
+
+- 版本级别：中版本（minor）
+- Git 提交消息：`feat: 发布 v2.2.0 版本矩阵更新`
+- Git Tag：`v2.2.0`
+- 自述摘要：
+  - 将 `galay-tracing v0.2.0` 以 `git-tag-archive` 形式加入版本矩阵，并同步 Docker 构建、安装顺序与验证工程入口。
+  - 将 `galay-kernel`、`galay-ssl`、`galay-http`、`galay-rpc`、`galay-mysql`、`galay-mongo`、`galay-redis`、`galay-mcp` 与 `galay-etcd` 更新到本次 BaseLogger 日志发布 tag。
+  - 同步刷新各组件在 `manifest.json` 与中英文 README 版本矩阵中的精确 commit，确保 `galay-sdk` bundle 与远端发布 tag 对齐。
+  - Docker 验证工程将关键组件最低版本提升到本次矩阵版本，并新增 `galay-tracing` 包发现、链接目标和基础头文件消费检查。
+  - 将 bundle 版本从 `v2.1.3` 升级到 `v2.2.0`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。

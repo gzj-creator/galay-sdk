@@ -7,6 +7,20 @@
 
 ## [Unreleased]
 
+## [v2.2.0] - 2026-05-20
+
+### Added
+- 将 `galay-tracing v0.2.0` 以 `git-tag-archive` 形式加入版本矩阵，并同步 Docker 构建、安装顺序与验证工程入口。
+
+### Changed
+- 将版本矩阵升级到本次组件发布结果：`galay-kernel v5.0.0`、`galay-ssl v2.1.0`、`galay-http v3.1.0`、`galay-rpc v2.1.0`、`galay-mysql v2.1.0`、`galay-mongo v3.1.0`、`galay-redis v2.1.0`、`galay-mcp v2.1.0` 与 `galay-etcd v3.1.0`。
+- 同步刷新各组件在 `manifest.json` 与中英文 README 版本矩阵中的精确 commit，确保 `galay-sdk` bundle 与远端发布 tag 对齐。
+- Docker 验证工程将 `galay-kernel` / `galay-ssl` / `galay-http` / `galay-rpc` / `galay-mcp` / `galay-redis` 最低版本提升到本次矩阵版本。
+- 将 bundle 版本从 `v2.1.3` 升级到 `v2.2.0`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+### Release
+- 按中版本发布要求提升版本到 `v2.2.0`。
+
 ## [v2.1.3] - 2026-05-18
 
 ### Changed

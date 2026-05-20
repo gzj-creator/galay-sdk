@@ -10,7 +10,7 @@
 - 克隆某个 `gdk` tag 后可获得确定版本矩阵及本地落库脚本
 - 本地 `galay-*` 工作树位于仓库根目录下，但不纳入版本控制
 
-当前 bundle 版本：`v2.1.3`
+当前 bundle 版本：`v2.2.0`
 
 ## 版本矩阵
 
@@ -27,16 +27,17 @@
 
 | 仓库 | 来源类型 | 收录版本 | 来源引用 |
 | --- | --- | --- | --- |
-| `galay-etcd` | `git-tag-archive` | `v3.0.3` | `c79fcdc4d7a56cb6263377c71eca5b7afc6c8145` |
-| `galay-http` | `git-tag-archive` | `v3.0.2` | `3817cda13def4be644a2034216cd1dedf521f84b` |
-| `galay-kernel` | `git-tag-archive` | `v4.0.1` | `97b7ef4a9963502ecba895f6671a3ef080996b22` |
+| `galay-etcd` | `git-tag-archive` | `v3.1.0` | `8d82e8c5003dff96dede0a78d05948c5678efa93` |
+| `galay-http` | `git-tag-archive` | `v3.1.0` | `359ab1bcdb8fd99ce269d1106522502f07ec0f50` |
+| `galay-kernel` | `git-tag-archive` | `v5.0.0` | `2090c4559a5eecb175b2d7da48b38422d09c1135` |
 | `galay-mail` | `git-tag-archive` | `v0.2.1` | `3bf199d769f44f946774f6cb12ab83a7e68e07a1` |
-| `galay-mcp` | `git-tag-archive` | `v2.0.2` | `c6bcb91c7155ed42a95299eab6747a0e9caf568d` |
-| `galay-mongo` | `git-tag-archive` | `v3.0.1` | `e801e663336d1001f2b98313d1552438d8dbffaa` |
-| `galay-mysql` | `git-tag-archive` | `v2.0.2` | `b173d1bb320c1c1a0d3181b580d83d2a0d6e7756` |
-| `galay-redis` | `git-tag-archive` | `v2.0.3` | `de88fbb7e091a514008d0dd8c33c50be347045af` |
-| `galay-rpc` | `git-tag-archive` | `v2.0.2` | `a8982611bd2708378c1c915091db315550cd833d` |
-| `galay-ssl` | `git-tag-archive` | `v2.0.2` | `0fd1f4849905bf5723f4da5f590ea30c45d17472` |
+| `galay-mcp` | `git-tag-archive` | `v2.1.0` | `cf4b03da262c3a5ecefa35a05263c2a51f35c26b` |
+| `galay-mongo` | `git-tag-archive` | `v3.1.0` | `f9e5b926b22ca40f96e0e43312ee8c9867c5c249` |
+| `galay-mysql` | `git-tag-archive` | `v2.1.0` | `d475b06f68552bac85dcfc015ff94398836280f2` |
+| `galay-redis` | `git-tag-archive` | `v2.1.0` | `3231607fed7ba1ca0874482304b2040424a24828` |
+| `galay-rpc` | `git-tag-archive` | `v2.1.0` | `d852ef46641bebe287de699836d40a3d6a27faa9` |
+| `galay-ssl` | `git-tag-archive` | `v2.1.0` | `2b2866980918a39db894530ca4b95fc5dee0f532` |
+| `galay-tracing` | `git-tag-archive` | `v0.2.0` | `03db3fc1ab2bfc0c1efaf4970748ea42d50d8bbb` |
 | `galay-utils` | `git-tag-archive` | `v2.1.1` | `d3fbf04c733a1026cd036ffbc68b198ac33ea1ba` |
 
 ## 更新流程
@@ -136,5 +137,6 @@ sh scripts/fetch_galay_repos.sh --manifest manifest.json --dry-run
 
 - `galay-utils` 当前使用其最新已发布 tag `v2.1.1` 导出，并与源仓库版本元数据保持一致。
 - `galay-http` 和 `galay-kernel` 也使用最新已发布 tag 导出，而非未发布分支状态。
-- `galay-mongo` 当前使用其已发布 tag `v3.0.1` 导出，并与源仓库版本元数据保持一致。
+- `galay-mongo` 当前使用其已发布 tag `v3.1.0` 导出，并与源仓库版本元数据保持一致。
 - `galay-mail` 当前使用其已发布 tag `v0.2.1` 导出，并与源仓库版本元数据保持一致。
+- `galay-tracing` 当前使用其已发布 tag `v0.2.0` 导出，并与源仓库版本元数据保持一致。

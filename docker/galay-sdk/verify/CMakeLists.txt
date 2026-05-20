@@ -7,12 +7,13 @@ set(CMAKE_PREFIX_PATH "/usr/local" ${CMAKE_PREFIX_PATH})
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG ON)
 
 find_package(galay-utils REQUIRED CONFIG)
-find_package(galay-kernel 4.0.0 REQUIRED CONFIG)
-find_package(galay-ssl 2.0.0 REQUIRED CONFIG)
-find_package(galay-http 3.0.0 REQUIRED CONFIG)
-find_package(galay-rpc 2.0.0 REQUIRED CONFIG)
-find_package(galay-mcp 2.0.0 REQUIRED CONFIG)
-find_package(galay-redis 2.0.0 REQUIRED CONFIG)
+find_package(galay-kernel 5.0.0 REQUIRED CONFIG)
+find_package(galay-ssl 2.1.0 REQUIRED CONFIG)
+find_package(galay-http 3.1.0 REQUIRED CONFIG)
+find_package(galay-tracing 0.2.0 REQUIRED CONFIG)
+find_package(galay-rpc 2.1.0 REQUIRED CONFIG)
+find_package(galay-mcp 2.1.0 REQUIRED CONFIG)
+find_package(galay-redis 2.1.0 REQUIRED CONFIG)
 find_package(galay-mail 0.2.0 REQUIRED CONFIG)
 find_package(galay-mysql REQUIRED CONFIG)
 find_package(galay-mongo REQUIRED CONFIG)
@@ -25,6 +26,7 @@ target_link_libraries(galay-sdk-verify PRIVATE
     galay-kernel::galay-kernel
     galay-ssl::galay-ssl
     galay-http::galay-http
+    galay-tracing::galay-tracing
     galay-rpc::galay-rpc
     galay-mcp
     galay-redis::galay-redis

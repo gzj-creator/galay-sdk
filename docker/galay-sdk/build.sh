@@ -7,6 +7,7 @@ readonly REPOS=(
     galay-kernel
     galay-ssl
     galay-http
+    galay-tracing
     galay-rpc
     galay-mcp
     galay-redis

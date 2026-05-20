@@ -2,6 +2,7 @@
 #include <galay-kernel/kernel/runtime.h>
 #include <galay-ssl/ssl/ssl_context.h>
 #include <galay-http/protoc/http/http_request.h>
+#include <galay-tracing/kernel/span.h>
 #include <galay-rpc/kernel/rpc_client.h>
 #include <galay-mcp/common/mcp_base.h>
 #include <galay-redis/base/redis_config.h>
