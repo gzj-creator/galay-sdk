@@ -7,12 +7,17 @@
 
 ## [Unreleased]
 
-## [v2.2.1] - 2026-05-20
+## [v2.2.1] - 2026-05-21
 
 ### Changed
 - 将 `galay-etcd`、`galay-http`、`galay-mcp`、`galay-mongo`、`galay-mysql`、`galay-redis`、`galay-rpc`、`galay-ssl`、`galay-tracing` 与 `galay-utils` 全部更新到本次 Doxygen 文档注释发布 tag，并同步刷新版本矩阵中的精确 commit。
 - Docker 验证工程将 `galay-ssl`、`galay-http`、`galay-tracing`、`galay-rpc`、`galay-mcp`、`galay-redis` 与 `galay-mail` 最低版本提升到本次矩阵版本。
 - 将 bundle 版本从 `v2.2.0` 升级到 `v2.2.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号。
+- 将 `galay-utils v2.1.2`、`galay-ssl v2.1.1` 与 `galay-mail v0.2.1` 的 source ref 刷新到同名远端 tag 重新指向后的修复提交。
+
+### Fixed
+- 收录 `galay-utils` 聚合头重复声明修复、`galay-ssl` awaitable 内部命名空间修复，以及 `galay-mail` 对当前 SDK 依赖矩阵的 CMake 版本对齐，恢复完整矩阵本地编译安装。
+- 将安装脚本默认生成的 `.galay-prefix/` 加入忽略列表，避免本地安装产物进入待提交状态。
 
 ### Release
 - 按修订版本发布要求提升版本到 `v2.2.1`。

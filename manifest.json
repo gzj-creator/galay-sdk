@@ -1,7 +1,7 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v2.2.0",
-  "release_date": "2026-05-20",
+  "bundle_version": "v2.2.1",
+  "release_date": "2026-05-21",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [
     {
@@ -42,7 +42,7 @@
       "local_path": "galay-mail",
       "path": "galay-mail",
       "version": "v0.2.1",
-      "commit": "3bf199d769f44f946774f6cb12ab83a7e68e07a1"
+      "commit": "2181696413965a464886d65dd101582e6510a319"
     },
     {
       "name": "galay-mcp",
@@ -102,7 +102,7 @@
       "local_path": "galay-ssl",
       "path": "galay-ssl",
       "version": "v2.1.1",
-      "commit": "687cc25feb5b69827ca4b7af46fd4d7ac394e73f"
+      "commit": "00aa28d82b1d4e8ef6cc7a345f87013b5f1f469b"
     },
     {
       "name": "galay-tracing",
@@ -122,7 +122,7 @@
       "local_path": "galay-utils",
       "path": "galay-utils",
       "version": "v2.1.2",
-      "commit": "3d81b841b9a5078c26c2ff32ce0266b93d054349"
+      "commit": "72bf5c363ffbf3cd0ac2ee9665b4abf4be54f68b"
     }
   ]
 }

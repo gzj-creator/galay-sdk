@@ -1,6 +1,7 @@
 *.DS_Store
 /galay-*
 .cache/
+.galay-prefix/
 *.log
 build/
 build-*/

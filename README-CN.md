@@ -30,15 +30,15 @@
 | `galay-etcd` | `git-tag-archive` | `v3.1.1` | `4b9d485b6750f31fe441fa4eee8885e38f6e7e42` |
 | `galay-http` | `git-tag-archive` | `v3.1.1` | `c99ce0f9a9dc3b2c76eeea87cb74fbc99a5e3f41` |
 | `galay-kernel` | `git-tag-archive` | `v5.0.0` | `2090c4559a5eecb175b2d7da48b38422d09c1135` |
-| `galay-mail` | `git-tag-archive` | `v0.2.1` | `3bf199d769f44f946774f6cb12ab83a7e68e07a1` |
+| `galay-mail` | `git-tag-archive` | `v0.2.1` | `2181696413965a464886d65dd101582e6510a319` |
 | `galay-mcp` | `git-tag-archive` | `v2.1.1` | `38f7d7c382d741e387c89bb3fdd323420837bcb3` |
 | `galay-mongo` | `git-tag-archive` | `v3.1.1` | `9a482bc64de23fc389d25ff21dd1e212eba64f31` |
 | `galay-mysql` | `git-tag-archive` | `v2.1.1` | `377b1a78e8b73aeda6943246edd353995c869f6d` |
 | `galay-redis` | `git-tag-archive` | `v2.1.1` | `a2c91f186b1869e35e95ffa2a34d7e57699f16fa` |
 | `galay-rpc` | `git-tag-archive` | `v2.1.1` | `115830277d6b0f0bb4f602819271b83593096fa6` |
-| `galay-ssl` | `git-tag-archive` | `v2.1.1` | `687cc25feb5b69827ca4b7af46fd4d7ac394e73f` |
+| `galay-ssl` | `git-tag-archive` | `v2.1.1` | `00aa28d82b1d4e8ef6cc7a345f87013b5f1f469b` |
 | `galay-tracing` | `git-tag-archive` | `v0.2.1` | `fa168dca605b828e9662d4371d39d6a47782c151` |
-| `galay-utils` | `git-tag-archive` | `v2.1.2` | `3d81b841b9a5078c26c2ff32ce0266b93d054349` |
+| `galay-utils` | `git-tag-archive` | `v2.1.2` | `72bf5c363ffbf3cd0ac2ee9665b4abf4be54f68b` |
 
 ## 更新流程
 
