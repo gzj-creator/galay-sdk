@@ -11,8 +11,8 @@
       "repo": "https://github.com/gzj-creator/galay-etcd.git",
       "local_path": "galay-etcd",
       "path": "galay-etcd",
-      "version": "v3.1.0",
-      "commit": "8d82e8c5003dff96dede0a78d05948c5678efa93"
+      "version": "v3.1.1",
+      "commit": "4b9d485b6750f31fe441fa4eee8885e38f6e7e42"
     },
     {
       "name": "galay-http",
@@ -21,8 +21,8 @@
       "repo": "https://github.com/gzj-creator/galay-http.git",
       "local_path": "galay-http",
       "path": "galay-http",
-      "version": "v3.1.0",
-      "commit": "359ab1bcdb8fd99ce269d1106522502f07ec0f50"
+      "version": "v3.1.1",
+      "commit": "c99ce0f9a9dc3b2c76eeea87cb74fbc99a5e3f41"
     },
     {
       "name": "galay-kernel",
@@ -51,8 +51,8 @@
       "repo": "https://github.com/gzj-creator/galay-mcp.git",
       "local_path": "galay-mcp",
       "path": "galay-mcp",
-      "version": "v2.1.0",
-      "commit": "cf4b03da262c3a5ecefa35a05263c2a51f35c26b"
+      "version": "v2.1.1",
+      "commit": "38f7d7c382d741e387c89bb3fdd323420837bcb3"
     },
     {
       "name": "galay-mongo",
@@ -61,8 +61,8 @@
       "repo": "https://github.com/gzj-creator/galay-mongo.git",
       "local_path": "galay-mongo",
       "path": "galay-mongo",
-      "version": "v3.1.0",
-      "commit": "f9e5b926b22ca40f96e0e43312ee8c9867c5c249"
+      "version": "v3.1.1",
+      "commit": "9a482bc64de23fc389d25ff21dd1e212eba64f31"
     },
     {
       "name": "galay-mysql",
@@ -71,8 +71,8 @@
       "repo": "https://github.com/gzj-creator/galay-mysql.git",
       "local_path": "galay-mysql",
       "path": "galay-mysql",
-      "version": "v2.1.0",
-      "commit": "d475b06f68552bac85dcfc015ff94398836280f2"
+      "version": "v2.1.1",
+      "commit": "377b1a78e8b73aeda6943246edd353995c869f6d"
     },
     {
       "name": "galay-redis",
@@ -81,8 +81,8 @@
       "repo": "https://github.com/gzj-creator/galay-redis.git",
       "local_path": "galay-redis",
       "path": "galay-redis",
-      "version": "v2.1.0",
-      "commit": "3231607fed7ba1ca0874482304b2040424a24828"
+      "version": "v2.1.1",
+      "commit": "a2c91f186b1869e35e95ffa2a34d7e57699f16fa"
     },
     {
       "name": "galay-rpc",
@@ -91,8 +91,8 @@
       "repo": "https://github.com/gzj-creator/galay-rpc.git",
       "local_path": "galay-rpc",
       "path": "galay-rpc",
-      "version": "v2.1.0",
-      "commit": "d852ef46641bebe287de699836d40a3d6a27faa9"
+      "version": "v2.1.1",
+      "commit": "115830277d6b0f0bb4f602819271b83593096fa6"
     },
     {
       "name": "galay-ssl",
@@ -101,8 +101,8 @@
       "repo": "https://github.com/gzj-creator/galay-ssl.git",
       "local_path": "galay-ssl",
       "path": "galay-ssl",
-      "version": "v2.1.0",
-      "commit": "2b2866980918a39db894530ca4b95fc5dee0f532"
+      "version": "v2.1.1",
+      "commit": "687cc25feb5b69827ca4b7af46fd4d7ac394e73f"
     },
     {
       "name": "galay-tracing",
@@ -111,8 +111,8 @@
       "repo": "https://github.com/gzj-creator/galay-tracing.git",
       "local_path": "galay-tracing",
       "path": "galay-tracing",
-      "version": "v0.2.0",
-      "commit": "03db3fc1ab2bfc0c1efaf4970748ea42d50d8bbb"
+      "version": "v0.2.1",
+      "commit": "fa168dca605b828e9662d4371d39d6a47782c151"
     },
     {
       "name": "galay-utils",
@@ -121,8 +121,8 @@
       "repo": "https://github.com/gzj-creator/galay-utils.git",
       "local_path": "galay-utils",
       "path": "galay-utils",
-      "version": "v2.1.1",
-      "commit": "d3fbf04c733a1026cd036ffbc68b198ac33ea1ba"
+      "version": "v2.1.2",
+      "commit": "3d81b841b9a5078c26c2ff32ce0266b93d054349"
     }
   ]
 }

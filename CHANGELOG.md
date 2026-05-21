@@ -7,6 +7,16 @@
 
 ## [Unreleased]
 
+## [v2.2.1] - 2026-05-20
+
+### Changed
+- 将 `galay-etcd`、`galay-http`、`galay-mcp`、`galay-mongo`、`galay-mysql`、`galay-redis`、`galay-rpc`、`galay-ssl`、`galay-tracing` 与 `galay-utils` 全部更新到本次 Doxygen 文档注释发布 tag，并同步刷新版本矩阵中的精确 commit。
+- Docker 验证工程将 `galay-ssl`、`galay-http`、`galay-tracing`、`galay-rpc`、`galay-mcp`、`galay-redis` 与 `galay-mail` 最低版本提升到本次矩阵版本。
+- 将 bundle 版本从 `v2.2.0` 升级到 `v2.2.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.2.1`。
+
 ## [v2.2.0] - 2026-05-20
 
 ### Added

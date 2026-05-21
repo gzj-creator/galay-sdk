@@ -155,6 +155,16 @@
   - 收录 `galay-kernel v4.0.1` 对 `TaskResultStorageTraits` 结果存储释放路径的修复，消除 GCC `-Wfree-nonheap-object` 警告。
   - 将 bundle 版本从 `v2.1.2` 升级到 `v2.1.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
 
+## v2.2.1 - 2026-05-20
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`docs: 更新版本矩阵到 Doxygen 文档注释发布`
+- Git Tag：`v2.2.1`
+- 自述摘要：
+  - 将 `galay-etcd`、`galay-http`、`galay-mcp`、`galay-mongo`、`galay-mysql`、`galay-redis`、`galay-rpc`、`galay-ssl`、`galay-tracing` 与 `galay-utils` 全部更新到本次 Doxygen 文档注释发布 tag，并同步刷新版本矩阵中的精确 commit。
+  - Docker 验证工程将关键组件最低版本提升到本次矩阵版本。
+  - 将 bundle 版本从 `v2.2.0` 升级到 `v2.2.1`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号。
+
 ## v2.2.0 - 2026-05-20
 
 - 版本级别：中版本（minor）
