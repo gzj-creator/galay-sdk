@@ -7,6 +7,9 @@
 
 ## [Unreleased]
 
+### Changed
+- 同步 `manifest.json` 与中英文 README 中的组件 source ref 到远端同版本 tag 重新指向后的最新 commit，保持版本矩阵与上游仓库一致。
+
 ## [v2.2.1] - 2026-05-21
 
 ### Changed
