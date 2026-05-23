@@ -7,8 +7,17 @@
 
 ## [Unreleased]
 
+## [v2.2.2] - 2026-05-23
+
 ### Changed
 - 同步 `manifest.json` 与中英文 README 中的组件 source ref 到远端同版本 tag 重新指向后的最新 commit，保持版本矩阵与上游仓库一致。
+- 将 `galay-tracing` 从 `v0.2.1` 升级到 `v0.3.0`，并同步刷新版本矩阵中的精确 commit。
+- 将 bundle 版本从 `v2.2.1` 升级到 `v2.2.2`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.2.2`。
+
+## [Unreleased]
 
 ## [v2.2.1] - 2026-05-21
 

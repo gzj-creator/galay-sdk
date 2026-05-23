@@ -1,7 +1,7 @@
 {
   "bundle_name": "galay-sdk",
-  "bundle_version": "v2.2.1",
-  "release_date": "2026-05-21",
+  "bundle_version": "v2.2.2",
+  "release_date": "2026-05-23",
   "source_policy": "one gdk version maps to a fixed galay-* tag matrix; galay-* repos are fetched locally under the workspace root and are excluded from version control",
   "sources": [
     {
@@ -111,8 +111,8 @@
       "repo": "https://github.com/gzj-creator/galay-tracing.git",
       "local_path": "galay-tracing",
       "path": "galay-tracing",
-      "version": "v0.2.1",
-      "commit": "5b1f4647aa27e4dad1518d6dacabb3fa2bb12efe"
+      "version": "v0.3.0",
+      "commit": "b4066789a4b0fcc95bc5e806f22b4fe7c284d1cc"
     },
     {
       "name": "galay-utils",

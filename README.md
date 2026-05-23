@@ -10,7 +10,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
 - local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v2.2.1`
+Current bundle version: `v2.2.2`
 
 ## Version Matrix
 
@@ -38,7 +38,7 @@ declares:
 | `galay-redis` | `git-tag-archive` | `v2.1.1` | `c8d6f76aeb17c16340a9eac2194ee27daa8f6fdc` |
 | `galay-rpc` | `git-tag-archive` | `v2.1.1` | `0acb2592ab0aa80dc21a1c72384964d8ffa8a9e1` |
 | `galay-ssl` | `git-tag-archive` | `v2.1.1` | `ba5b428ec3e117baf5c4e7e08c30bb3c872a6d3a` |
-| `galay-tracing` | `git-tag-archive` | `v0.2.1` | `5b1f4647aa27e4dad1518d6dacabb3fa2bb12efe` |
+| `galay-tracing` | `git-tag-archive` | `v0.3.0` | `b4066789a4b0fcc95bc5e806f22b4fe7c284d1cc` |
 | `galay-utils` | `git-tag-archive` | `v2.1.2` | `38300ae8af3e99b36efc6c998e0b6ee1ee749598` |
 
 ## Update Workflow
@@ -149,5 +149,5 @@ metadata that belong to each component. It filters out generated content such as
   current source-repo package version metadata.
 - `galay-mail` is exported from its released tag `v0.2.1`, aligned with the
   current source-repo package version metadata.
-- `galay-tracing` is exported from its released tag `v0.2.1`, aligned with the
+- `galay-tracing` is exported from its released tag `v0.3.0`, aligned with the
   current source-repo package version metadata.
