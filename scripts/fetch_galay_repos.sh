@@ -162,7 +162,11 @@ while [ "$index" -lt "$repo_count" ]; do
             log "dry-run: fetch $name at $version in $target_dir from $effective_repo"
         else
             log "fetch: $name ($target_dir) @ $version from $effective_repo"
-            git -C "$target_dir" fetch --depth 1 origin "$version"
+            if git -C "$target_dir" fetch --depth 1 origin "+refs/tags/$version:refs/tags/$version" 2>/dev/null; then
+                :
+            else
+                git -C "$target_dir" fetch --depth 1 origin "$version"
+            fi
         fi
     elif [ -d "$target_dir" ]; then
         die "target exists but is not a git repo: $target_dir"

@@ -80,6 +80,38 @@ ACTUAL_TAG=$(git -C "$BUNDLE_ROOT/galay-sample" describe --tags --exact-match HE
 assert_eq "$TAG_COMMIT" "$ACTUAL_COMMIT"
 assert_eq "v1.0.0" "$ACTUAL_TAG"
 
+printf '%s\n' "v1.1" > "$SOURCE_REPO/sample.txt"
+git -C "$SOURCE_REPO" add sample.txt
+git -C "$SOURCE_REPO" commit -q -m "v1.1"
+git -C "$SOURCE_REPO" tag -a v1.1.0 -m "v1.1.0"
+NEXT_TAG_COMMIT=$(git -C "$SOURCE_REPO" rev-parse "v1.1.0^{}")
+
+cat > "$BUNDLE_ROOT/manifest.json" <<EOF
+{
+  "bundle_name": "fixture-gdk",
+  "bundle_version": "v9.9.9",
+  "release_date": "2000-01-01",
+  "sources": [
+    {
+      "name": "galay-sample",
+      "source_type": "git-tag-archive",
+      "repo": "$SOURCE_REPO",
+      "path": "galay-sample",
+      "version": "v1.1.0",
+      "commit": null
+    }
+  ]
+}
+EOF
+
+sh "$REPO_ROOT/scripts/fetch_galay_repos.sh" --manifest "$BUNDLE_ROOT/manifest.json"
+
+ACTUAL_COMMIT=$(git -C "$BUNDLE_ROOT/galay-sample" rev-parse HEAD)
+ACTUAL_TAG=$(git -C "$BUNDLE_ROOT/galay-sample" describe --tags --exact-match HEAD)
+
+assert_eq "$NEXT_TAG_COMMIT" "$ACTUAL_COMMIT"
+assert_eq "v1.1.0" "$ACTUAL_TAG"
+
 cat > "$BUNDLE_ROOT/manifest-ssh.json" <<EOF
 {
   "bundle_name": "fixture-gdk",

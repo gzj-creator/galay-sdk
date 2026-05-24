@@ -188,3 +188,14 @@
   - 同步刷新各组件在 `manifest.json` 与中英文 README 版本矩阵中的精确 commit，确保 `galay-sdk` bundle 与远端发布 tag 对齐。
   - Docker 验证工程将关键组件最低版本提升到本次矩阵版本，并新增 `galay-tracing` 包发现、链接目标和基础头文件消费检查。
   - 将 bundle 版本从 `v2.1.3` 升级到 `v2.2.0`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+## v2.2.3 - 2026-05-24
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`fix: 修复组件 tag 刷新并发布 v2.2.3`
+- Git Tag：`v2.2.3`
+- 自述摘要：
+  - 将 `galay-utils` 从 `v2.1.2` 升级到远端最新已发布 tag `v2.1.3`，并同步刷新版本矩阵中的精确 commit。
+  - 将 `manifest.json` 与中英文 README 的 source ref 从 tag 对象对齐为各远端 tag 解引用后的提交，恢复 `verify_bundle.sh` 对矩阵 commit 的一致性校验。
+  - 修复 `scripts/fetch_galay_repos.sh` 对已有本地仓库刷新新 tag 时只拉取 `FETCH_HEAD`、未同步本地 tag 导致 checkout 失败的问题，并补充回归测试。
+  - 将 bundle 版本从 `v2.2.2` 升级到 `v2.2.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
