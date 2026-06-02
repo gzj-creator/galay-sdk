@@ -199,3 +199,12 @@
   - 将 `manifest.json` 与中英文 README 的 source ref 从 tag 对象对齐为各远端 tag 解引用后的提交，恢复 `verify_bundle.sh` 对矩阵 commit 的一致性校验。
   - 修复 `scripts/fetch_galay_repos.sh` 对已有本地仓库刷新新 tag 时只拉取 `FETCH_HEAD`、未同步本地 tag 导致 checkout 失败的问题，并补充回归测试。
   - 将 bundle 版本从 `v2.2.2` 升级到 `v2.2.3`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+## v2.2.4 - 2026-06-02
+
+- 版本级别：小版本（patch）
+- Git 提交消息：`chore: 发布 v2.2.4 版本矩阵更新`
+- Git Tag：`v2.2.4`
+- 自述摘要：
+  - 将 `galay-http` 从 `v3.1.1` 升级到远端最新已发布 tag `v3.1.2`，并同步刷新版本矩阵中的精确 commit。
+  - 将 bundle 版本从 `v2.2.3` 升级到 `v2.2.4`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。

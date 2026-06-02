@@ -10,7 +10,7 @@ Its core rule is:
 - cloning a `gdk` tag gives you the exact version matrix and scripts needed to materialize the sources locally
 - local `galay-*` worktrees live under the workspace root and are excluded from version control
 
-Current bundle version: `v2.2.3`
+Current bundle version: `v2.2.4`
 
 ## Version Matrix
 
@@ -29,7 +29,7 @@ declares:
 | Repository | Source type | Included version | Source ref |
 | --- | --- | --- | --- |
 | `galay-etcd` | `git-tag-archive` | `v3.1.1` | `4b9d485b6750f31fe441fa4eee8885e38f6e7e42` |
-| `galay-http` | `git-tag-archive` | `v3.1.1` | `c99ce0f9a9dc3b2c76eeea87cb74fbc99a5e3f41` |
+| `galay-http` | `git-tag-archive` | `v3.1.2` | `50d62c3d63425c934cf9f19c871470ecb8749f6f` |
 | `galay-kernel` | `git-tag-archive` | `v5.0.0` | `2090c4559a5eecb175b2d7da48b38422d09c1135` |
 | `galay-mail` | `git-tag-archive` | `v0.2.1` | `2181696413965a464886d65dd101582e6510a319` |
 | `galay-mcp` | `git-tag-archive` | `v2.1.1` | `38f7d7c382d741e387c89bb3fdd323420837bcb3` |

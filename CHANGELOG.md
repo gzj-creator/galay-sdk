@@ -7,6 +7,15 @@
 
 ## [Unreleased]
 
+## [v2.2.4] - 2026-06-02
+
+### Changed
+- 将 `galay-http` 从 `v3.1.1` 升级到远端最新已发布 tag `v3.1.2`，并同步刷新版本矩阵中的精确 commit。
+- 将 bundle 版本从 `v2.2.3` 升级到 `v2.2.4`，同步更新 `VERSION`、`manifest.json`、`README.md` 与 `README-CN.md` 的展示版本号和发布日期。
+
+### Release
+- 按修订版本发布要求提升版本到 `v2.2.4`。
+
 ## [v2.2.3] - 2026-05-24
 
 ### Changed
